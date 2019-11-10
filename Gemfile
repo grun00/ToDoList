@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+#FactoryBot for testing
+gem "factory_bot_rails"
 #Devise Gem for users and Login
 gem 'devise'
 #Capybara gem for testing

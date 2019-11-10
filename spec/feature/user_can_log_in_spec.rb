@@ -27,4 +27,5 @@ feature 'User can login' do
     expect(page).to have_content('Welcome! You have signed up successfully.')
     expect(current_path).to eq root_path
   end
+
 end
