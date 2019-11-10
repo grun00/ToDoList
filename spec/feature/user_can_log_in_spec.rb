@@ -14,4 +14,17 @@ feature 'User can login' do
 
     expect(page).to have_content('Signed in successfully.') 
   end
+
+  scenario 'and can create an Account' do
+    visit root_path
+    click_on 'Log In'
+    click_on 'Sign up'
+    fill_in 'Email:', with: 'user@email.com'
+    fill_in 'Password:', with: '123456'
+    fill_in 'Password Confirmation:', with: '123456'
+    click_on 'Sign up!'
+
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(current_path).to eq root_path
+  end
 end
