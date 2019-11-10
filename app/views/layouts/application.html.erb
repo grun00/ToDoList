@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if (user_signed_in?)%>
+      <p>Loged In </p>
+    <% else %>
+     <p> <%=link_to 'Log In', new_user_session_path %></p>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> 
     <%= yield %>
