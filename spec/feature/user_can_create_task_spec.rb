@@ -21,8 +21,8 @@ feature 'User can Create Task' do
   scenario 'And must be loged in' do
     visit new_task_path
 
-    expect(current_path).to eq root_path
-    expect(page).not_to have_content('Create Task') 
+    expect(current_path).to eq new_user_session_path
+    expect(page).not_to have_content('Task Created!') 
   end
 
   scenario 'And Title must have more than 4 characters' do

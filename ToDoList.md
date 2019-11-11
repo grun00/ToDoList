@@ -18,8 +18,8 @@
 
 #Tasks Managment
 #Create a Task
-1 - Loged In User can Create one Task
-2 - Cannot create is not loged in
+1 - Loged In User can Create one Task <Check>
+2 - Cannot create is not loged in 
 2 - Validades name(Uniqueness)
 3 - Validades Future Date(Must be in future)
 4 - Is created with default value of Incomplete
