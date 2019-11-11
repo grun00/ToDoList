@@ -3,6 +3,14 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.where(user: current_user)
+    if params[:order].in? %w[high low old new]
+      case params[:order]
+        when 'high'
+          @tasks.order!(priority: :desc)
+        when 'low'
+          @tasks.order!(:priority) 
+      end
+    end
   end
 
   def new
