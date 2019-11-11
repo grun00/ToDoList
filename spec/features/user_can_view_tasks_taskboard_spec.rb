@@ -67,7 +67,33 @@ feature 'User can view tasks in TaskBoard' do
     click_on 'Task Board'
     click_on 'Low First'
 
-    second_task.title.should appear_before(first_task.title)
+    second_task.title.should appear_before(first_task.title) 
+  end
 
+  scenario 'And Can Order By newest' do
+    user = create(:user)
+    first_task = create(:task, user: user, title: 'first', priority: 20)
+    second_task = create(:task, user: user, title: 'second', priority: 10)
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'Low First'
+    click_on 'Newest First'
+
+    first_task.title.should appear_before(second_task.title) 
+  end
+
+  scenario 'And Can Order by oldest' do
+    user = create(:user)
+    first_task = create(:task, user: user, title: 'first', priority: 20)
+    second_task = create(:task, user: user, title: 'second', priority: 10)
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'Oldest First'
+
+    second_task.title.should appear_before(first_task.title) 
   end
 end

@@ -9,6 +9,10 @@ class TasksController < ApplicationController
           @tasks.order!(priority: :desc)
         when 'low'
           @tasks.order!(:priority) 
+        when 'old'
+          @tasks.order!(updated_at: :desc)
+        when 'new'
+          @tasks.order!(:updated_at) 
       end
     end
   end
