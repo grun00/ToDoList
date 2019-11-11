@@ -30,14 +30,9 @@ feature 'User can login' do
 
   scenario 'and can log out' do
     user = create(:user) 
+    login_as(user)
 
     visit root_path
-    click_on 'Log In'
-    within('form#new_user') do
-      fill_in 'Email:', with: user.email
-      fill_in 'Password:', with: '123456'
-      click_on 'Log In!'
-    end
     click_on 'Log Out'
 
     expect(current_path).to eq root_path
