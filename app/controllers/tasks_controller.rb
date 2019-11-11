@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
+  def index
+    @tasks = Task.all
+  end
 
   def new
     @task = Task.new
@@ -9,9 +12,12 @@ class TasksController < ApplicationController
   def create
     @task = Task.create(task_params)
     @task.user = current_user
-    @task.save
-    flash[:alert] = 'Task Created!'
-    redirect_to @task
+    if @task.save
+      flash[:alert] = 'Task Created!'
+      redirect_to @task
+    else
+      render :new
+    end
   end
 
   def show

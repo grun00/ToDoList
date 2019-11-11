@@ -36,7 +36,7 @@ feature 'User can Create Task' do
     select 'Medium', from: 'Priority'
     click_on 'Create Task' 
 
-    expect(page).to have_content('Title Lenght Must be Greater than 4 characters')
+    expect(page).to have_content('Title is too short (minimum is 4 characters)')
   end
 
   scenario 'And Title must have less than 20 characters' do
@@ -50,7 +50,7 @@ feature 'User can Create Task' do
     select 'Medium', from: 'Priority'
     click_on 'Create Task' 
 
-    expect(page).to have_content('Title Lenght Must be Less than 20 characters')
+    expect(page).to have_content('Title is too long (maximum is 20 characters)')
   end 
 
   scenario 'And Description Can\'t be blank' do 
@@ -64,6 +64,6 @@ feature 'User can Create Task' do
     select 'Medium', from: 'Priority'
     click_on 'Create Task' 
 
-    expect(page).to have_content('Description Can\'t be blank')
+    expect(page).to have_content('Description can\'t be blank')
   end
 end
