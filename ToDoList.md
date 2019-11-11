@@ -20,8 +20,9 @@
 #Create a Task
 1 - Loged In User can Create one Task <Check>
 2 - Cannot create is not loged in  <Check>
-3 - Validades name(length, blank) 
-4 - Validates description for blank
+3 - Validades name(length, blank)  <Check>
+4 - Validates description for blank <Check>
+5 - Only owner of task can see it
 #Read a Task
 1 - A loged In User can view their own tasks in a Task Board
 2 - A loged In User can view their own tasks individually

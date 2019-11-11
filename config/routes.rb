@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
 
-  resources :tasks
+  resources :tasks, only: %i[show new create destroy update]
 end

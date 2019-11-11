@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create show]
 
   def index
     @tasks = Task.all
@@ -22,6 +22,9 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    if !(@task.user == current_user)
+      redirect_to root_path
+    end
   end
 
   private
@@ -30,5 +33,5 @@ class TasksController < ApplicationController
     task = params.require(:task).permit(:title, :description)
     task[:priority] = params[:task][:priority].to_i
     task
-  end
+  end 
 end
