@@ -12,6 +12,7 @@ feature 'User can Create Task' do
     select 'Medium', from: 'Priority'
     click_on 'Create Task'
 
+    expect(page).to have_content('Task Created!')
     expect(page).to have_content('Test Task')
     expect(page).to have_content('Test Description')
     expect(page).to have_content('Medium') 
