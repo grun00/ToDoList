@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!, only: %i[new create show]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where(user: current_user)
   end
 
   def new
