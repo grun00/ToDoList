@@ -42,4 +42,18 @@ feature 'User can view tasks in TaskBoard' do
 
     expect(current_path).to eq task_path(first_task)
   end
+
+  scenario 'And Can Order by Priority' do
+    user = create(:user)
+    first_task = create(:task, user: user, title: 'first', priority: 2)
+    second_task = create(:task, user: user, title: 'second', priority: 1)
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'High First'
+
+    first_task.title.should appear_before(second_task).title  
+
+  end
 end

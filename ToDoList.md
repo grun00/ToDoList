@@ -24,16 +24,15 @@
 4 - Validates description for blank <Check>
 5 - Only owner of task can see it <Check>
 #Read a Task
-1 - A loged In User can view their own tasks in a Task Board
-2 - A loged In User can view their own tasks individually
+1 - A loged In User can view their own tasks in a Task Board <Check>
+2 - A loged In User can view their own tasks individually <Check>
 3 - A loged In User can view their tasks ordered by priority in Homepage
 4 - A loged In User can view their tasks ordered by date in Homepage
 5 - A loged In User can view their tasks ordered by priority in Task Board
-6 - A loged In User can view their tasks ordered by date in Task Board
 7 - A loged In user can filter for tasks by priority
 8 - A loged In User can search for tasks by title
 9 - A loged In User can search for tasks by description
-10 - A loged In User can search for tasks by priority
+10- A loged In User can search for tasks by priority
 # Update a Task
 1 - A loged in User can edit their own task's Description
 2 - A loged in User can edit their own task's Name
