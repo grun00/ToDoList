@@ -28,11 +28,11 @@
 2 - A loged In User can view their own tasks individually <Check>
 3 - A loged In User can view their tasks ordered by priority in Homepage
 4 - A loged In User can view their tasks ordered by date in Homepage
-5 - A loged In User can view their tasks ordered by priority in Task Board
-7 - A loged In user can filter for tasks by priority
-8 - A loged In User can search for tasks by title
-9 - A loged In User can search for tasks by description
-10- A loged In User can search for tasks by priority
+5 - A loged In user can filter for tasks by priority <Check>
+6 - A loged In user can filter for tasks by update date <Check>
+7 - A loged In User can search for tasks by title 
+8 - A loged In User can search for tasks by description
+9 - A loged In User can search for tasks by priority
 # Update a Task
 1 - A loged in User can edit their own task's Description
 2 - A loged in User can edit their own task's Name
