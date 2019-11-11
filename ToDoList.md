@@ -19,6 +19,7 @@
 #Tasks Managment
 #Create a Task
 1 - Loged In User can Create one Task
+2 - Cannot create is not loged in
 2 - Validades name(Uniqueness)
 3 - Validades Future Date(Must be in future)
 4 - Is created with default value of Incomplete
@@ -46,3 +47,11 @@
 #Destroy Comment
 1 - A User can delete a comment 
 
+#Models
+##Tasks 
+#Title
+#Description
+#Status(Default: Incomplete)
+#Priority(High, medium low)
+#A Task Belongs to a User
+#A Task has Many Comments
