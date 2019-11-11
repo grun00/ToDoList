@@ -1,7 +1,14 @@
 <% @tasks.each do |task| %>
+  <hr>
   <h3> <%= link_to task.title, task_path(task) %> </h3>
   <ul>
-    <li> <%= task.description %> </li>
-    <li> <%= task.priority %> </li>
+    <li>
+      <h4> Description: </h4>
+      <ul>
+        <li> <%= task.description %> </li>
+      </ul>
+    </li>
+    <br>
+    <li>Priority: <%= task.priority %> </li>
   </ul> 
 <% end %>
