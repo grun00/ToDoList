@@ -29,4 +29,17 @@ feature 'User can view tasks in TaskBoard' do
     expect(page).to have_css('h3', text: second_task.title)
     expect(page).not_to have_css('h3', text: other_user_task.title)
   end
+
+  scenario 'And can click on Task name to see task Page' do 
+    user = create(:user)
+    first_task = create(:task, user: user, title: 'first')
+    second_task = create(:task, user: user, title: 'second')
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'first'
+
+    expect(current_path).to eq task_path(first_task)
+  end
 end

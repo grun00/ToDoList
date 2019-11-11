@@ -1,5 +1,5 @@
 <% @tasks.each do |task| %>
-  <h3> <%= task.title %> </h3>
+  <h3> <%= link_to task.title, task_path(task) %> </h3>
   <ul>
     <li> <%= task.description %> </li>
     <li> <%= task.priority %> </li>
