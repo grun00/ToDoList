@@ -2,27 +2,46 @@
   <p><%= error %> </p>
 
 <% end %>
-<div class='form-group align-item-center' >
-  <%= form_for @task do |f| %>
 
-    <div class='col-4' >
-      <%= f.label :title, 'Task Title' %>
-      <%= f.text_field :title, class: 'form-control mb-2', placeholder: 'A Title'%>
-      <small class='form-text text-muted'> We'll never share your email with anyone. </small>
+<div class='form-group align-item-center container border' >
+  <%= form_for @task do |f| %>
+    <div class='row'>  
+      <p class='col-4'></p>
+      <div class='col-4 text-center' >
+        <%= f.label :title, 'Task Title' %>
+        <%= f.text_field :title, class: 'form-control mb-2', placeholder: 'A Title'%>
+        <small class='form-text text-muted'> We'll never share your email with anyone. </small>
+      </div>
     </div>
     <br> 
-    <div class='col-4'>
-      <%= f.label :description, 'Task Description'%>
-      <%= f.text_area :description, class: 'form-control mb-2', rows: '4'%>
-    </div> 
-    <br>
-    <div class='col-4'>
-      <%= f.label :priority, 'Priority:'%>
-      <%= f.select(:priority, [['Low', 0], ['Medium', 10], ['High', 20]], class: 'form-control mb-2')%>
+      
+    <div class='row'>
+      <p class='col-4'></p> 
+      <div class='col-4' align='center'>
+        <%= f.label :description, 'Task Description'%>
+        <%= f.text_area :description, class: 'form-control mb-2', rows: '4'%>
+      </div> 
     </div>
+
     <br>
-    <div class='col-4'>
-      <%= f.submit class: 'btn btn-primary'%>
+
+    <div class='row'>
+      <p class='col-4'></p> 
+      <div class='col-4' align='center'>
+        <%= f.label :priority, 'Priority:'%>
+        <%= f.select(:priority, [['Low', 0], ['Medium', 10], ['High', 20]], class: 'form-control mb-2')%>
+      </div>
     </div>
+
+    <br>
+
+    <div class='row'>
+      <p class='col-4'></p> 
+      <div class='col-4' align='center'>
+        <%= f.submit class: 'btn btn-primary col-4'%>
+        <%= link_to 'Go Back', :back, class: 'btn btn-secondary col-4' %>
+      </div>
+    </div>
+
   <% end %>
 </div>
