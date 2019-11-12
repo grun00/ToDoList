@@ -1,13 +1,38 @@
-<h1> <%= @task.title %> </h1>
-<p> <%= @task.description %> </p>
-<p> <%= @task.priority.to_s.capitalize %> </p>
-<p> <%= @task.status.to_s.capitalize %> </p>
-<%= form_for(@task, url: change_status_path, method: :post) do |f| %>
-  <%= f.label :status, 'Status' %>
-  <%= f.select(:status, [['Incomplete', 0], ['Complete', 10]]) %>
-  <%= f.hidden_field :task_id, value: params[:id] %>
-  <%= f.submit 'Change Status' %>
-<% end %>
-<p> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
-<p> <%= link_to 'Delete Task', confirm_delete_task_path(@task) %> </p>
+<div class='container border'>
+  
+  <div class='row'>
+    <h1 class='col', align='center'> <%= @task.title %> </h1>
+  </div>
+  <br>
+  <div class='row'>
+    <p class='col-4'></p>
+    <p class='col-4 text-center text-wrap text-break'  align='center' style='white-space: initial;' > <%= @task.description.to_s %> </p>
+  </div>
+  <br>
+  <div class='row text-center' align='center'> 
+    <p class='col-4'></p>
+    <p class='col-4 text-center'> <strong> Priority: </strong> <%= @task.priority.to_s.capitalize %> </p>
+  </div>
+
+  <div class='row text-center' align='center'>
+    <p class='col-4'></p>
+    <p class='col-4'> <strong> Current Status</strong> <%= @task.status.to_s.capitalize %> </p>
+  </div>
+
+  <div class='row text-center' align='center'>
+    <p class='col-4'></p>
+    <%= form_for(@task, url: change_status_path, method: :post) do |f| %>
+      <strong><%= f.label :status, 'Change Status:' %></strong>
+      <%= f.select(:status, [['Incomplete', 0], ['Complete', 10]]) %>
+      <%= f.hidden_field :task_id, value: params[:id] %>
+      <%= f.submit 'Change Status' %>
+    <% end %>
+  </div>
+  <br>
+  <div class='row text-center' align='center'>
+    <p class='col-4'></p> 
+    <p class='btn btn-secondary col-2'> <%= link_to 'Edit Task', edit_task_path(@task), class: 'text-white'%> </p>
+    <p class='btn btn-danger col-2'> <%= link_to 'Delete Task', confirm_delete_task_path(@task), class: 'text-white' %> </p>
+  </div>
+</div>
 

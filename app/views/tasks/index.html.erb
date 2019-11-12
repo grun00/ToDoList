@@ -6,6 +6,8 @@
   <div class='col-2'>
     <ul class='nav flex-column nav-light bg-dark'> 
       <h6 class='nav-item text-white'> Ordering Options</h6>
+      <li class='nav-item ' role='tab'> <%= link_to 'By Title(asc)', tasks_path(order: 'asc'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
+      <li class='nav-item ' role='tab'> <%= link_to 'By Title(des)', tasks_path(order: 'des'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
       <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
       <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
       <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
@@ -16,11 +18,11 @@
   </div>
   <div class='col-10'>
     <% @tasks.in_groups_of(3, false).each do |group| %>
-      <div class='row'>
+      <div class='row card-deck'>
       <% group.each do |task| %> 
         <div class='card col-sm-4'>
           <h3 class='card-title align-center'><%= task.title %> </h3>
-          <div class='card-text'>
+          <div class='card-text h-100'>
             <h4> Description: </h4>
             <%= task.description %> 
           </div>
