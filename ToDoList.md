@@ -4,7 +4,7 @@
 2 - Read a Task
 3 - Update a Task
 4 - Destroy a Task
-#Tasks need to have a Date and Time(Of Creation and Of Action), Title, Description, Comments, and Status(Complete, Incomplete)
+#Tasks need to have a Date and Time(Of Creation and Of Action), Title, Description, Priorities(High, medium, low), and Status(Complete, Incomplete)
 #Users need to be able to register, log in, log out, do basic operations on tasks, create a list of tasks.
 
 #Tests
@@ -30,9 +30,8 @@
 4 - A loged In User can view their tasks ordered by date in Homepage
 5 - A loged In user can filter for tasks by priority <Check>
 6 - A loged In user can filter for tasks by update date <Check>
-7 - A loged In User can search for tasks by title 
-8 - A loged In User can search for tasks by description
-9 - A loged In User can search for tasks by priority
+7 - A loged In user can filter for Complete tasks 
+8 - A loged In user can filter for Incomplete tasks 
 # Update a Task
 1 - A loged in User can edit their task <Check>
 2 - A loged in User can change the status from Incomplete to Incomplete
@@ -40,6 +39,10 @@
 1 - A loged in User can Delete an Individual Task from view page
 2 - A loged in User can Delete an Individual Task from Task Board
 3 - A loged in User can Delete any amount of Tasks from Task Board
+#Search
+1 - A loged In User can search for tasks by title 
+2 - A loged In User can search for tasks by description
+3 - A loged In User can search for tasks by priority
 
 ##Comments Managment
 #Create a Comment
