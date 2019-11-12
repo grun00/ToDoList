@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, only: %i[new create show]
+  before_action :find_task, only: %i[edit update show]
 
   def index
     @tasks = Task.where(user: current_user)
@@ -14,6 +15,12 @@ class TasksController < ApplicationController
         when 'new'
           @tasks.order!(:updated_at) 
       end
+    end
+  end
+
+  def show
+    if !(@task.user == current_user)
+      redirect_to root_path
     end
   end
 
@@ -32,13 +39,18 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-    @task = Task.find(params[:id])
-    if !(@task.user == current_user)
-      redirect_to root_path
-    end
+  def edit
   end
 
+  def update 
+    if @task.update(task_params)
+      flash[:alert] = 'Task Updated!'
+      redirect_to @task
+    else
+      render :edit
+    end
+  end
+  
   private
 
   def task_params
@@ -46,4 +58,8 @@ class TasksController < ApplicationController
     task[:priority] = params[:task][:priority].to_i
     task
   end 
+
+  def find_task
+    @task = Task.find(params[:id])
+  end
 end
