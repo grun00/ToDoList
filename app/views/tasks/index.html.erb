@@ -5,6 +5,8 @@
   <li> <%= link_to 'Low First', tasks_path(order: 'low')%>  </li>
   <li> <%= link_to 'Oldest First', tasks_path(order: 'old')%>  </li>
   <li> <%= link_to 'Newest First', tasks_path(order: 'new')%>  </li>
+  <li> <%= link_to 'Complete First', tasks_path(order: 'comp')%>  </li>
+  <li> <%= link_to 'Incomplete First', tasks_path(order: 'incomp')%>  </li>
 </ul>
 
 
@@ -18,7 +20,8 @@
         <li> <%= task.description %> </li>
       </ul>
     </li>
-    <br>
+    <br> 
+    <li>Status: <%= task.status %> </li>
     <li>Priority: <%= task.priority %> </li>
   </ul> 
 <% end %>
