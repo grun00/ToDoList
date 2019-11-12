@@ -28,4 +28,18 @@ feature 'User can edit Tasks' do
     login_as(user)
 
   end
+
+  scenario 'And change status to complete' do
+    user = create(:user)
+    task = create(:task, user: user)
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on task.title
+    select 'Complete', from: 'Status'
+    click_on 'Change Status'
+
+    expect(page).to have_css('li', with: 'Complete!')
+  end
 end
