@@ -96,4 +96,30 @@ feature 'User can view tasks in TaskBoard' do
 
     second_task.title.should appear_before(first_task.title) 
   end
+
+  scenario 'And can Order By Status (Complete First)' do
+    user = create(:user)
+    first_task = create(:task, user: user, status: 10)
+    second_task = create(:task, user: user) 
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'Incomplete First'
+
+    second_task.title.should appear_before(first_task.title) 
+  end
+
+  scenario 'And can Order By Status (Incomplete First)' do
+    user = create(:user)
+    first_task = create(:task, user: user, status: 10)
+    second_task = create(:task, user: user) 
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'Incomplete First'
+
+    second_task.title.should appear_before(first_task.title) 
+  end 
 end

@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.where(user: current_user)
-    if params[:order].in? %w[high low old new]
+    if params[:order].in? %w[high low old new comp incomp]
       case params[:order]
         when 'high'
           @tasks.order!(priority: :desc)
@@ -14,6 +14,10 @@ class TasksController < ApplicationController
           @tasks.order!(updated_at: :desc)
         when 'new'
           @tasks.order!(:updated_at) 
+        when 'comp'
+          @tasks.order!(status: :desc)
+        when 'incomp'
+          @tasks.order!(:status)
       end
     end
   end
@@ -49,6 +53,13 @@ class TasksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def change_status
+    @task = Task.find(params[:task][:task_id])
+    @task.update(status: params[:task][:status].to_i)
+    redirect_to @task
+
   end
   
   def confirm_delete 

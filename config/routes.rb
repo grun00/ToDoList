@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     get 'confirm_delete', on: :member
   end
 
+  post 'change_status', to: 'tasks#change_status'
 end

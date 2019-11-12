@@ -1,6 +1,13 @@
 <h1> <%= @task.title %> </h1>
 <p> <%= @task.description %> </p>
 <p> <%= @task.priority.to_s.capitalize %> </p>
+<p> <%= @task.status.to_s.capitalize %> </p>
+<%= form_for(@task, url: change_status_path, method: :post) do |f| %>
+  <%= f.label :status, 'Status' %>
+  <%= f.select(:status, [['Incomplete', 0], ['Complete', 10]]) %>
+  <%= f.hidden_field :task_id, value: params[:id] %>
+  <%= f.submit 'Change Status' %>
+<% end %>
 <p> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
 <p> <%= link_to 'Delete Task', confirm_delete_task_path(@task) %> </p>
 
