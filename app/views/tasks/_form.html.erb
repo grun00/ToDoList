@@ -2,23 +2,27 @@
   <p><%= error %> </p>
 
 <% end %>
+<div class='form-group align-item-center' >
+  <%= form_for @task do |f| %>
 
-<%= form_for @task do |f| %>
-
-  <div>
-    <%= f.label :title, 'Task Title:' %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div>
-    <%= f.label :description, 'Task Description:'%>
-    <%= f.text_area :description %>
-  </div>
-
-  <div>
-    <%= f.label :priority, 'Priority:'%>
-    <%= f.select(:priority, [['Low', 0], ['Medium', 10], ['High', 20]])%>
-  </div>
-
-  <%= f.submit %>
-<% end %>
+    <div class='col-4' >
+      <%= f.label :title, 'Task Title' %>
+      <%= f.text_field :title, class: 'form-control mb-2', placeholder: 'A Title'%>
+      <small class='form-text text-muted'> We'll never share your email with anyone. </small>
+    </div>
+    <br> 
+    <div class='col-4'>
+      <%= f.label :description, 'Task Description'%>
+      <%= f.text_area :description, class: 'form-control mb-2', rows: '4'%>
+    </div> 
+    <br>
+    <div class='col-4'>
+      <%= f.label :priority, 'Priority:'%>
+      <%= f.select(:priority, [['Low', 0], ['Medium', 10], ['High', 20]], class: 'form-control mb-2')%>
+    </div>
+    <br>
+    <div class='col-4'>
+      <%= f.submit class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>

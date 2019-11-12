@@ -1,35 +1,40 @@
-<div>
-  <ul class='nav nav-pills nav-light bg-dark'> 
-    <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-    <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
-    <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
-    <li class='nav-item ' role='tab'> <%= link_to 'Low Priority First', tasks_path(order: 'low'), class: 'text-white nav-link', id: 'ord_low'%>  </li>
-    <li class='nav-item ' role='tab'> <%= link_to 'Complete First', tasks_path(order: 'comp'), class: 'text-white nav-link', id: 'ord_comp'%>  </li>
-    <li class='nav-item ' role='tab'> <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: 'text-white nav-link', id: 'ord_incomp'%>  </li>
-  </ul>
-</div>
 <br>
 <br>
 
 <div class='container'>
-  <% @tasks.in_groups_of(3, false).each do |group| %>
-    <div class='row'>
-    <% group.each do |task| %> 
-      <div class='card col-sm-4'>
-        <h3 class='card-title align-center'><%= task.title %> </h3>
-        <div class='card-text'>
-          <h4> Description: </h4>
-          <%= task.description %> 
+<div class='row'>
+  <div class='col-2'>
+    <ul class='nav flex-column nav-light bg-dark'> 
+      <h6 class='nav-item text-white'> Ordering Options</h6>
+      <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
+      <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
+      <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
+      <li class='nav-item ' role='tab'> <%= link_to 'Low Priority First', tasks_path(order: 'low'), class: 'text-white nav-link', id: 'ord_low'%>  </li>
+      <li class='nav-item ' role='tab'> <%= link_to 'Complete First', tasks_path(order: 'comp'), class: 'text-white nav-link', id: 'ord_comp'%>  </li>
+      <li class='nav-item ' role='tab'> <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: 'text-white nav-link', id: 'ord_incomp'%>  </li>
+    </ul>
+  </div>
+  <div class='col-10'>
+    <% @tasks.in_groups_of(3, false).each do |group| %>
+      <div class='row'>
+      <% group.each do |task| %> 
+        <div class='card col-sm-4'>
+          <h3 class='card-title align-center'><%= task.title %> </h3>
+          <div class='card-text'>
+            <h4> Description: </h4>
+            <%= task.description %> 
+          </div>
+            <ul class='list-group list-group-flush'>
+              <li class='list-group-item'> Status: <%= task.status.to_s.capitalize %> </li>
+              <li class='list-group-item'> Priority: <%= task.priority.to_s.capitalize %> </li>
+            </ul>
+          <div class='card-body'>
+            <%= link_to "View #{task.title}", task %> 
+          </div>
         </div>
-          <ul class='list-group list-group-flush'>
-            <li class='list-group-item'> Status: <%= task.status.to_s.capitalize %> </li>
-            <li class='list-group-item'> Priority: <%= task.priority.to_s.capitalize %> </li>
-          </ul>
-        <div class='card-body'>
-          <%= link_to "View #{task.title}", task %> 
-        </div>
-      </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
-  <% end %>
+  </div>
 </div>
