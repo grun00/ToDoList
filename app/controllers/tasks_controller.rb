@@ -50,6 +50,13 @@ class TasksController < ApplicationController
       render :edit
     end
   end
+
+  def change_status
+    @task = Task.find(params[:task][:task_id])
+    @task.update(status: params[:task][:status].to_i)
+    redirect_to @task
+
+  end
   
   private
 

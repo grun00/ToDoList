@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :tasks, only: %i[index show new create destroy update edit]
+
+  post 'change_status', to: 'tasks#change_status'
 end

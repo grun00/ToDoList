@@ -40,6 +40,6 @@ feature 'User can edit Tasks' do
     select 'Complete', from: 'Status'
     click_on 'Change Status'
 
-    expect(page).to have_css('li', with: 'Complete!')
+    expect(page).to have_css('p', text: 'Complete')
   end
 end
