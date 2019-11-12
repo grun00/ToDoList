@@ -10,6 +10,8 @@ FactoryBot.define do
 
     priority { 10 } 
 
+    status { 0 }
+
     user
   end
 end
