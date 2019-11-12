@@ -35,7 +35,7 @@
 2 - A loged in User can change the status from Complete to Incomplete <Check>
 #Destroy a Task
 1 - A loged in User can Delete an Individual Task from view page <Check>
-2 - A loged in User can Delete any amount of Tasks from Task Board
+2 - A loged in User can Delete any amount of Tasks from Task Board <???>
 #Search
 1 - A loged In User can search for tasks by title 
 2 - A loged In User can search for tasks by description
