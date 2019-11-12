@@ -34,10 +34,8 @@
 8 - A loged In User can search for tasks by description
 9 - A loged In User can search for tasks by priority
 # Update a Task
-1 - A loged in User can edit their own task's Description
-2 - A loged in User can edit their own task's Name
-3 - A loged in User can change the status of their task to Complete
-4 - A loged in User can change the status of their task to Incomplete
+1 - A loged in User can edit their task <Check>
+2 - A loged in User can change the status from Incomplete to Incomplete
 #Destroy a Task
 1 - A loged in User can Delete an Individual Task from view page
 2 - A loged in User can Delete an Individual Task from Task Board
