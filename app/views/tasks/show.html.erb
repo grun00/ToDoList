@@ -2,3 +2,5 @@
 <p> <%= @task.description %> </p>
 <p> <%= @task.priority.to_s.capitalize %> </p>
 <p> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
+<p> <%= link_to 'Delete Task', confirm_delete_task_path(@task) %> </p>
+
