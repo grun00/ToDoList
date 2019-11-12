@@ -121,34 +121,5 @@ feature 'User can view tasks in TaskBoard' do
     click_on 'Incomplete First'
 
     second_task.title.should appear_before(first_task.title) 
-  end
-
-  scenario 'And can Filter By Status (Complete only)' do
-    user = create(:user)
-    first_task = create(:task, user: user, status: 10)
-    second_task = create(:task, user: user) 
-    login_as(user)
-
-    visit root_path
-    click_on 'Task Board'
-    click_on 'Show Complete Tasks'
-
-    expect(page).to have_content(first_task.title)
-    expect(page).not_to have_content(second_task.title)
-  end
-
-  scenario 'And can Filter By Status (Incomplete only)' do
-    user = create(:user)
-    first_task = create(:task, user: user, status: 10)
-    second_task = create(:task, user: user) 
-    login_as(user)
-
-    visit root_path
-    click_on 'Task Board'
-    click_on 'Show Incomplete Tasks'
-
-    expect(page).not_to have_content(first_task.title)
-    expect(page).to have_content(second_task.title)
-
-  end
+  end 
 end
