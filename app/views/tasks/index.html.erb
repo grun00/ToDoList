@@ -16,11 +16,11 @@
   </div>
   <div class='col-10'>
     <% @tasks.in_groups_of(3, false).each do |group| %>
-      <div class='row'>
+      <div class='row card-deck'>
       <% group.each do |task| %> 
         <div class='card col-sm-4'>
           <h3 class='card-title align-center'><%= task.title %> </h3>
-          <div class='card-text'>
+          <div class='card-text h-100'>
             <h4> Description: </h4>
             <%= task.description %> 
           </div>
