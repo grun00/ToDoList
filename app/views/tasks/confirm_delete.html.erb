@@ -1,5 +1,14 @@
-<p> Confirm Deleteion of Task: <%= @task.title %>
-<div>
-  <p><%= link_to "Delete #{@task.title}", task_path(@task), method: "delete" %> </p>
-  <p><%= link_to 'Cancel deletion', :back %> </p>
+<div class='container border'>
+  <div class='row-12' align='center'>
+    <p class=col-4></p>
+    <div class='col-4'>
+      <h4> Confirm Deleteion of Task: <%= @task.title %> </h4>
+    </div>
+  </div>
+    <br>
+  <div class='row-12' align='center'>
+    <p class=col-4></p>
+      <p class='col-2 btn btn-danger'><%= link_to "Delete #{@task.title}", task_path(@task), method: "delete", class: 'text-white' %> </p>
+      <p class='col-2 btn btn-secondary'><%= link_to 'Go Back', :back, class: 'text-white' %> </p>
+  </div>
 </div>
