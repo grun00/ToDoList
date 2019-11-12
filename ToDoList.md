@@ -28,15 +28,14 @@
 2 - A loged In User can view their own tasks individually <Check>
 3 - A loged In user can filter for tasks by priority <Check>
 4 - A loged In user can filter for tasks by update date <Check>
-5 - A loged In user can filter for Complete tasks 
-6 - A loged In user can filter for Incomplete tasks 
+5 - A loged In user can filter for Complete tasks <Check>
+6 - A loged In user can filter for Incomplete tasks <Check>
 # Update a Task
 1 - A loged in User can edit their task <Check>
-2 - A loged in User can change the status from Incomplete to Incomplete
+2 - A loged in User can change the status from Complete to Incomplete <Check>
 #Destroy a Task
-1 - A loged in User can Delete an Individual Task from view page
-2 - A loged in User can Delete an Individual Task from Task Board
-3 - A loged in User can Delete any amount of Tasks from Task Board
+1 - A loged in User can Delete an Individual Task from view page <Check>
+2 - A loged in User can Delete any amount of Tasks from Task Board
 #Search
 1 - A loged In User can search for tasks by title 
 2 - A loged In User can search for tasks by description
@@ -48,8 +47,6 @@
 2 - Validates Comment Body
 #Read a Comment
 1 - A User can view all coments in a Task
-#Update Comment
-1 - A User can edit the content of a comment
 #Destroy Comment
 1 - A User can delete a comment 
 
@@ -61,3 +58,6 @@
 #Priority(High, medium low)
 #A Task Belongs to a User
 #A Task has Many Comments
+
+##Comments
+#Body
