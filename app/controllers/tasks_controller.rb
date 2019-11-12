@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create show]
-  before_action :find_task, only: %i[edit update show confirm_delete]
+  before_action :authenticate_user!, only: %i[new create show destroy]
+  before_action :find_task, only: %i[edit update show confirm_delete destroy]
 
   def index
     @tasks = Task.where(user: current_user)
@@ -61,10 +61,16 @@ class TasksController < ApplicationController
     redirect_to @task
 
   end
-  
-  def confirm_delete 
-    
+
+  def destroy
+    @task.destroy
+    redirect_to tasks_path
   end
+
+  def confirm_delete 
+  end
+
+  
 
   private
 

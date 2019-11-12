@@ -10,7 +10,7 @@ feature 'User can Delete Tasks' do
     click_on 'Task Board'
     click_on task.title
     click_on 'Delete Task'
-    click_on 'Confirm'
+    click_on "Delete #{task.title}"
 
     expect(page).not_to have_content(task.title) 
   end
