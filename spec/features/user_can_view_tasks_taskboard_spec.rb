@@ -107,7 +107,7 @@ feature 'User can view tasks in TaskBoard' do
     click_on 'Task Board'
     click_on 'Incomplete First'
 
-    first_task.title.should appear_before(second_task.title) 
+    second_task.title.should appear_before(first_task.title) 
   end
 
   scenario 'And can Order By Status (Incomplete First)' do
