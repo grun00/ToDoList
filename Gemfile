@@ -3,6 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+#Bootstrap-tabs
+gem 'rails-bootstrap-tabs', '~> 0.1.1'
+#Jquery
+gem 'jquery-rails'
+#sprockets-rails
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+#BootStrap
+gem 'bootstrap'
 #Orderly for testing 
 gem 'orderly'
 #FactoryBot for testing

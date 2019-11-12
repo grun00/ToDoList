@@ -10,13 +10,14 @@
   </head>
 
   <body>
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <% if (user_signed_in?)%>
-      <p><%=link_to 'Log Out', destroy_user_session_path, method: :delete %></p>
-      <p><%= link_to 'Create a Task', new_task_path %> </p>
-      <p><%= link_to 'Task Board', tasks_path %> </p>
+      <%= link_to 'NavBrand', tasks_path, class: 'nav-brand' %>
+      <%= link_to 'Task Board', tasks_path, class: 'nav-item nav-link active' %> 
+      <%= link_to 'Create a Task', new_task_path, class: 'nav-link' %> 
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link'%>
     <% else %>
-     <p> <%=link_to 'Log In', new_user_session_path %></p>
+     <%=link_to 'Log In', new_user_session_path %>
     <% end %>
     </nav>
     <p class="notice"><%= notice %></p>

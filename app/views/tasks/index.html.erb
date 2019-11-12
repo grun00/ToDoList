@@ -1,27 +1,35 @@
-<h2> Welcome to Your TaskBoard, <%=current_user.email %></h2>
-<p> Order Your Tasks </p>
-<ul>
-  <li> <%= link_to 'High First', tasks_path(order: 'high')%>  </li>
-  <li> <%= link_to 'Low First', tasks_path(order: 'low')%>  </li>
-  <li> <%= link_to 'Oldest First', tasks_path(order: 'old')%>  </li>
-  <li> <%= link_to 'Newest First', tasks_path(order: 'new')%>  </li>
-  <li> <%= link_to 'Complete First', tasks_path(order: 'comp')%>  </li>
-  <li> <%= link_to 'Incomplete First', tasks_path(order: 'incomp')%>  </li>
-</ul>
+<div>
+  <ul class='nav nav-pills nav-light bg-dark'> 
+    <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
+    <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
+    <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
+    <li class='nav-item ' role='tab'> <%= link_to 'Low Priority First', tasks_path(order: 'low'), class: 'text-white nav-link', id: 'ord_low'%>  </li>
+    <li class='nav-item ' role='tab'> <%= link_to 'Complete First', tasks_path(order: 'comp'), class: 'text-white nav-link', id: 'ord_comp'%>  </li>
+    <li class='nav-item ' role='tab'> <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: 'text-white nav-link', id: 'ord_incomp'%>  </li>
+  </ul>
+</div>
+<br>
+<br>
 
-
-<% @tasks.each do |task| %>
-  <hr>
-  <h3> <%= link_to task.title, task_path(task) %> </h3>
-  <ul>
-    <li>
-      <h4> Description: </h4>
-      <ul>
-        <li> <%= task.description %> </li>
-      </ul>
-    </li>
-    <br> 
-    <li>Status: <%= task.status %> </li>
-    <li>Priority: <%= task.priority %> </li>
-  </ul> 
-<% end %>
+<div class='container'>
+  <% @tasks.in_groups_of(3, false).each do |group| %>
+    <div class='row'>
+    <% group.each do |task| %> 
+      <div class='card col-sm-4'>
+        <h3> <%= link_to task.title, task_path(task) %> </h3>
+        <ul>
+          <li>
+            <h4> Description: </h4>
+            <ul>
+              <li> <%= task.description %> </li>
+            </ul>
+          </li>
+          <br> 
+          <li>Status: <%= task.status %> </li>
+          <li>Priority: <%= task.priority %> </li>
+        </ul> 
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
