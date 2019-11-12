@@ -51,7 +51,7 @@ feature 'User can view tasks in TaskBoard' do
 
     visit root_path
     click_on 'Task Board'
-    click_on 'High First'
+    click_on 'High Priority First'
 
     first_task.title.should appear_before(second_task.title)
 
@@ -65,7 +65,7 @@ feature 'User can view tasks in TaskBoard' do
 
     visit root_path
     click_on 'Task Board'
-    click_on 'Low First'
+    click_on 'Low Priority First'
 
     second_task.title.should appear_before(first_task.title) 
   end
@@ -78,7 +78,7 @@ feature 'User can view tasks in TaskBoard' do
 
     visit root_path
     click_on 'Task Board'
-    click_on 'Low First'
+    click_on 'Low Priority First'
     click_on 'Newest First'
 
     first_task.title.should appear_before(second_task.title) 

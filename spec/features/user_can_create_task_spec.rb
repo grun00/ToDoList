@@ -7,8 +7,8 @@ feature 'User can Create Task' do
 
     visit root_path
     click_on 'Create a Task'
-    fill_in 'Task Title:', with: 'Test Task'
-    fill_in 'Description:', with: 'Test Description'
+    fill_in 'Task Title', with: 'Test Task'
+    fill_in 'Description', with: 'Test Description'
     select 'Medium', from: 'Priority'
     click_on 'Create Task'
 
@@ -31,8 +31,8 @@ feature 'User can Create Task' do
 
     visit root_path
     click_on 'Create a Task'
-    fill_in 'Task Title:', with: 'Tes'
-    fill_in 'Description:', with: 'Test Description'
+    fill_in 'Task Title', with: 'Tes'
+    fill_in 'Description', with: 'Test Description'
     select 'Medium', from: 'Priority'
     click_on 'Create Task' 
 
@@ -45,8 +45,8 @@ feature 'User can Create Task' do
 
     visit root_path
     click_on 'Create a Task'
-    fill_in 'Task Title:', with: '111111111111111111111'
-    fill_in 'Description:', with: 'Test Description'
+    fill_in 'Task Title', with: '111111111111111111111'
+    fill_in 'Description', with: 'Test Description'
     select 'Medium', from: 'Priority'
     click_on 'Create Task' 
 
@@ -59,8 +59,8 @@ feature 'User can Create Task' do
 
     visit root_path
     click_on 'Create a Task'
-    fill_in 'Task Title:', with: 'Test Task'
-    fill_in 'Description:', with: ''
+    fill_in 'Task Title', with: 'Test Task'
+    fill_in 'Description', with: ''
     select 'Medium', from: 'Priority'
     click_on 'Create Task' 
 

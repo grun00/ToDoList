@@ -11,8 +11,8 @@ feature 'User can edit Tasks' do
     click_on task.title
     click_on 'Edit Task'
 
-    fill_in 'Task Title:', with: 'Test Task'
-    fill_in 'Description:', with: 'Test Description'
+    fill_in 'Task Title', with: 'Test Task'
+    fill_in 'Description', with: 'Test Description'
     select 'High', from: 'Priority'
     click_on 'Update Task'
 
