@@ -21,4 +21,11 @@ feature 'User can edit Tasks' do
     expect(page).to have_content('Test Description')
     expect(page).to have_content('High') 
   end 
+
+  scenario 'and can change status to complete' do
+    user = create(:user)
+    task = create(:task, user: user)
+    login_as(user)
+
+  end
 end
