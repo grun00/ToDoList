@@ -105,9 +105,9 @@ feature 'User can view tasks in TaskBoard' do
 
     visit root_path
     click_on 'Task Board'
-    click_on 'Incomplete First'
+    click_on 'Complete First'
 
-    second_task.title.should appear_before(first_task.title) 
+    first_task.title.should appear_before(second_task.title) 
   end
 
   scenario 'And can Order By Status (Incomplete First)' do
@@ -119,6 +119,32 @@ feature 'User can view tasks in TaskBoard' do
     visit root_path
     click_on 'Task Board'
     click_on 'Incomplete First'
+
+    second_task.title.should appear_before(first_task.title) 
+  end 
+
+  scenario 'And can Order by Title (Ascending)' do
+    user = create(:user)
+    first_task = create(:task,title: 'A Task', user: user)
+    second_task = create(:task, title: 'B Task', user: user) 
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'By Title(asc)'
+
+    first_task.title.should appear_before(second_task.title) 
+  end
+
+  scenario 'And can Order by Title (Descending)' do
+    user = create(:user)
+    first_task = create(:task,title: 'A Task', user: user)
+    second_task = create(:task, title: 'B Task', user: user) 
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on 'By Title(des)'
 
     second_task.title.should appear_before(first_task.title) 
   end 
