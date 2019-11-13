@@ -21,3 +21,5 @@ require("channels")
 //= require bootstrap
 //= require bootstrap-tab
 //= require bootstrap-pills
+//= require jquery
+//= require jquery_ujs
