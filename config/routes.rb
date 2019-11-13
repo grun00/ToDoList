@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
 
   post 'change_status', to: 'tasks#change_status'
+  post 'search', to: 'tasks#search'
 end

@@ -8,8 +8,8 @@ feature 'User can search for tasks' do
     login_as(user)
 
     visit root_path
-    fill_in 'Search', with: first_task.title
-    click_on 'Search!'
+    fill_in 'Search:', with: first_task.title
+    click_on 'Search'
 
     expect(page).to have_content(first_task.title)
     expect(page).not_to have_content(second_task.title) 
@@ -23,8 +23,8 @@ feature 'User can search for tasks' do
     login_as(user)
 
     visit root_path
-    fill_in 'Search', with: 'ABC'
-    click_on 'Search!'
+    fill_in 'Search:', with: 'ABC'
+    click_on 'Search'
 
     expect(page).to have_content(first_task.title)
     expect(page).to have_content(second_task.title) 

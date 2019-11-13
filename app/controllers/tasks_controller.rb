@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new create show destroy]
+  before_action :authenticate_user!, only: %i[index new create show destroy search]
   before_action :find_task, only: %i[edit update show confirm_delete destroy]
-
+  
   def index
     @tasks = Task.where(user: current_user)
     if params[:order].in? %w[asc des high low old new comp incomp]
@@ -74,6 +74,9 @@ class TasksController < ApplicationController
   def confirm_delete 
   end
 
+  def search
+    @results = Task.where("title LIKE ?", "%#{sanitize_sql_like(params[:q])}%")
+  end
   
 
   private
@@ -86,5 +89,10 @@ class TasksController < ApplicationController
 
   def find_task
     @task = Task.find(params[:id])
+  end 
+
+  def sanitize_sql_like(string, escape_character = "\\")
+    pattern = Regexp.union(escape_character, "%", "_")
+    string.gsub(pattern) { |x| [escape_character, x].join }
   end
 end
