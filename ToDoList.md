@@ -37,9 +37,9 @@
 1 - A loged in User can Delete an Individual Task from view page <Check>
 2 - A loged in User can Delete any amount of Tasks from Task Board <???>
 #Search
-1 - A loged In User can search for tasks by title 
-2 - A loged In User can search for tasks by description
-3 - A loged In User can search for tasks by priority
+1 - A loged In User can search for tasks by title and find Exact Result
+2 - A loged In User can search for tasks by title and find Partial Results
+3 - A loged In User can search only for tasks that they own
 
 ##Comments Managment
 #Create a Comment
