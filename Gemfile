@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+#Glyphicon
+gem 'glyphicons-rails', '~> 0.1.2'
 #Devise-Bootstrap
 gem 'devise-bootstrap-views', '~> 1.0'
 #Bootstrap-tabs
