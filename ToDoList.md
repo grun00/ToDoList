@@ -10,11 +10,11 @@
 #Tests
 #Basic Utils
 ##Visitor Views Homepage
-1 - Sucessfully
+1 - Sucessfully <Check>
 ###User can Log in
-1 - An existing account
-2 - Create an Account
-3 - Log out
+1 - An existing account <Check> 
+2 - Create an Account <Check> 
+3 - Log out <Check> 
 
 #Tasks Managment
 #Create a Task
@@ -37,9 +37,20 @@
 1 - A loged in User can Delete an Individual Task from view page <Check>
 2 - A loged in User can Delete any amount of Tasks from Task Board <???>
 #Search
-1 - A loged In User can search for tasks by title and find Exact Result
-2 - A loged In User can search for tasks by title and find Partial Results
-3 - A loged In User can search only for tasks that they own
+1 - A loged In User can search for tasks by title and find Exact Result <Check>
+2 - A loged In User can search for tasks by title and find Partial Results <Check>
+3 - A loged In User can search only for tasks that they own <Check>
+#Complete/Incomplete Pages
+1 - User can go to a Page with all Complete Tasks
+2 - User can go to a Page with all Incomplete Tasks
+3 - User can go to a Page and chose to view tasks by priority
+#Homepage
+1 - User can see example cards at homepage(Carroussel?)
+2 - If user has more than 3 tasks he sees 3 random tasks at homepage
+
+#Date?
+1 - A task can have a limit date, and when it's reached it changes to complete?
+
 
 ##Comments Managment
 #Create a Comment
