@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+#FontAwesome
+gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.11.2'
 #Glyphicon
 gem 'glyphicons-rails', '~> 0.1.2'
 #Devise-Bootstrap

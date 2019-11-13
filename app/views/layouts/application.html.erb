@@ -4,7 +4,6 @@
     <title>ToDoList</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,7 +19,9 @@
         <%= form_with(url: 'search', local: true) do %>
           <%= label_tag(:q, 'Search:') %>
           <%= text_field_tag(:q) %>
-          <%= submit_tag('Search') %>
+          <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+                  <i class="fa fa-search" aria-hidden="true"></i>
+              <% end %>
         <% end %>
       </div>
     <% else %>
