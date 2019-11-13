@@ -9,7 +9,7 @@ feature 'User can search for tasks' do
 
     visit root_path
     fill_in 'Search:', with: first_task.title
-    click_on 'Search'
+    find('#search-btn').click
 
     expect(page).to have_content(first_task.title)
     expect(page).not_to have_content(second_task.title) 
@@ -24,7 +24,7 @@ feature 'User can search for tasks' do
 
     visit root_path
     fill_in 'Search:', with: 'ABC'
-    click_on 'Search'
+    find('#search-btn').click
 
     expect(page).to have_content(first_task.title)
     expect(page).to have_content(second_task.title) 
@@ -39,7 +39,7 @@ feature 'User can search for tasks' do
 
     visit root_path
     fill_in 'Search:', with: task.title
-    click_on 'Search'
+    find('#search-btn').click
 
     expect(page).to have_content('0 Results Found')
     expect(page).not_to have_content(task.title) 
