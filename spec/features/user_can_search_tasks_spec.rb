@@ -30,4 +30,18 @@ feature 'User can search for tasks' do
     expect(page).to have_content(second_task.title) 
     expect(page).not_to have_content(third_task.title) 
   end 
+
+  scenario 'And can\'t find other users tasks' do
+    user = create(:user)
+    other_user = create(:user)
+    task = create(:task, user: other_user)
+    login_as(user)
+
+    visit root_path
+    fill_in 'Search:', with: task.title
+    click_on 'Search'
+
+    expect(page).to have_content('0 Results Found')
+    expect(page).not_to have_content(task.title) 
+  end
 end
