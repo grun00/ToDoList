@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_002224) do
+ActiveRecord::Schema.define(version: 2019_11_14_133442) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_002224) do
     t.integer "priority", default: 0
     t.integer "user_id"
     t.integer "status", default: 0
+    t.boolean "share"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
