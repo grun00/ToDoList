@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <%= link_to 'NavBrand', root_path, class: 'nav-brand' %>
     <% if (user_signed_in?)%>
-      <%= link_to 'NavBrand', root_path, class: 'nav-brand' %>
       <%= link_to 'Task Board', tasks_path, class: 'nav-item nav-link active' %> 
       <%= link_to 'Complete Tasks', complete_tasks_path, class: 'nav-item nav-link active' %> 
       <%= link_to 'Incomplete Tasks', incomplete_tasks_path, class: 'nav-item nav-link active' %> 
