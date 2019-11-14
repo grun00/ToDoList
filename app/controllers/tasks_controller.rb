@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new create show destroy search]
+  before_action :authenticate_user!, only: %i[index new create destroy search]
   before_action :find_task, only: %i[edit update show confirm_delete destroy]
   skip_before_action :verify_authenticity_token, only: %i[search]
   
@@ -28,10 +28,13 @@ class TasksController < ApplicationController
   end
 
   def show
-    if !(@task.user == current_user)
-      redirect_to root_path
-    end
+    if @task.share == false
+      authenticate_user!  
+      if !(@task.user == current_user)
+        redirect_to root_path
+      end
   end
+    end
 
   def new
     @task = Task.new
