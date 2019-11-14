@@ -34,7 +34,7 @@ feature 'User can search for tasks' do
   scenario 'And can\'t find other users tasks' do
     user = create(:user)
     other_user = create(:user)
-    task = create(:task, user: other_user)
+    task = create(:task, user: other_user, title: 'Other User')
     login_as(user)
 
     visit root_path
@@ -42,6 +42,5 @@ feature 'User can search for tasks' do
     find('#search-btn').click
 
     expect(page).to have_content('0 Results Found')
-    expect(page).not_to have_content(task.title) 
   end
 end
