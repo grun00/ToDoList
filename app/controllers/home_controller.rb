@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @tasks = Task.where(share: true) 
+    if current_user
+      @tasks = Task.where(share: true).last(3)
+    else
+      @tasks = Task.first(3)
+    end
   end
 end
