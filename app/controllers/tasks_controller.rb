@@ -29,12 +29,6 @@ class TasksController < ApplicationController
 
   def show
     if @task.share == false
-      authenticate_user!  
-      if !(@task.user == current_user)
-        redirect_to root_path
-      end
-    end
-    if !(@task.user == current_user)
       redirect_to root_path
     end
   end
@@ -96,7 +90,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    task = params.require(:task).permit(:title, :description)
+    task = params.require(:task).permit(:title, :description, :share, :status)
     task[:priority] = params[:task][:priority].to_i
     task
   end 
