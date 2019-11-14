@@ -28,7 +28,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    if @task.share == false
+    if @task.share == false and @task.user != current_user
       redirect_to root_path
     end
   end

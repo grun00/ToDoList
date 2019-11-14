@@ -20,6 +20,7 @@ feature 'User can Delete Tasks' do
     task = create(:task, user: user)
 
     visit task_path(task)
+    click_on 'Delete Task'
 
     expect(current_path).to eq root_path
   end 

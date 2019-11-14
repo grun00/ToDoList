@@ -66,15 +66,5 @@ feature 'User can Create Task' do
 
     expect(page).to have_content('Description can\'t be blank')
   end
-
-  scenario 'And only owner of task can acess link' do
-    user = create(:user)
-    other_user = create(:user, email: 'other@email.com')
-    task = create(:task, user: other_user)
-
-    login_as(user)
-    visit task_path(task)
-
-    expect(current_path).to eq root_path
-  end
 end
+
