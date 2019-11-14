@@ -69,4 +69,33 @@ feature 'User can change shared status' do
 
     expect(Task.last.share).to eq false 
   end 
-end
+
+  scenario 'And can edit on show page(Public to Private)' do
+    user = create(:user)
+    task = create(:task, user: user, share: true)
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on task.title
+    select 'Private', from: 'Change Privacy:'
+    click_on 'Change Setting'
+
+    expect(page).to have_content('This Task is Private')
+  end
+
+  scenario 'And can edit on show page(Private to Public)' do
+    user = create(:user)
+    task = create(:task, user: user, share: true)
+    login_as(user)
+
+    visit root_path
+    click_on 'Task Board'
+    click_on task.title
+    select 'Private', from: 'Change Privacy:'
+    click_on 'Change Setting'
+
+    expect(page).to have_content('This Task is Private')
+  end
+
+  end
