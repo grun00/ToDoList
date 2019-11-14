@@ -8,14 +8,4 @@ class Task < ApplicationRecord
   validates :description, length: {maximum: 280} 
 
   belongs_to :user
-
-  def make_private
-    self.share = false
-    self.save!
-  end
-
-  def make_public
-    self.share = true
-    self.save!
-  end
 end
