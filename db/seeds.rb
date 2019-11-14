@@ -10,5 +10,6 @@ User.create(email: 'a@b.c', password: '123456')
 adm = User.create(email: 'adm@email.com', password: '123456')
 
 for i in 0..2 do
-  Task.create(title: "Example Task \##{i + 1}", description: 'A Task can have a description of up to 280 characters!', priority: (10*i), user: adm, status: 10, share: true)
+  task = Task.create(title: "Example Task \##{i + 1}", description: 'A Task can have a description of up to 280 characters!', priority: (10*i), user: adm, status: 10)
+  task.share = true
 end
