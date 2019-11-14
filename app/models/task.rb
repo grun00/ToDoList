@@ -13,4 +13,8 @@ class Task < ApplicationRecord
   def share_default
     self.share = false
   end
+
+  def make_shared
+    self.share = true
+  end
 end

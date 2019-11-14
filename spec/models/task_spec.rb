@@ -12,4 +12,8 @@ RSpec.describe Task, type: :model do
   it 'Is created with default priority of 0' do
     expect(Task.new.priority.to_i).to eq 0
   end
+
+  it 'make_shared functin turns tark into shared' do
+    expect(Task.new.make_shared).to eq true
+  end
 end
