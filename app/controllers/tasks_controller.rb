@@ -83,6 +83,10 @@ class TasksController < ApplicationController
     @tasks = Task.where(user: current_user).complete
   end
 
+  def incomplete
+    @tasks = Task.where(user: current_user).incomplete
+  end
+
   private
 
   def task_params

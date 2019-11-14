@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :tasks, only: %i[index show new create update edit destroy] do
     get 'confirm_delete', on: :member
     get 'complete', on: :collection
+    get 'incomplete', on: :collection
   end
 
   post 'change_status', to: 'tasks#change_status'
