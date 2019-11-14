@@ -18,6 +18,33 @@
     <p class='col-4'></p>
     <p class='col-4'> <strong> Current Status</strong> <%= @task.status.to_s.capitalize %> </p>
   </div> 
+
+  <div class='row text-center' align='center'>
+    <p class='col-4'></p>
+    <p class='col-4'>
+      <strong> Privacy: </strong>
+      <% if @task.share %>
+        This Task is Public
+      <% else %>
+        This Task is Private
+      <% end %>
+    </p> 
+  </div> 
+
+  <div class='row text-center' align='center'>
+    <p class='col-4'></p>
+    <% if current_user == @task.user %>
+      <%= form_for(@task, url: change_privacy_path, method: :post) do |f| %>
+        <strong><%= f.label :share, 'Change Privacy:' %></strong>
+        <%= f.select(:share, [['Private', false], ['Public', true]]) %>
+        <%= f.hidden_field :task_id, value: params[:id] %>
+        <%= f.submit 'Change Setting' %>
+      <% end %>
+    <% end %> 
+  </div>
+
+
+
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <% if current_user == @task.user %>

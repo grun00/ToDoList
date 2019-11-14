@@ -10,6 +10,11 @@
         <ul class='list-group list-group-flush'>
           <li class='list-group-item'> Status: <%= task.status.to_s.capitalize %> </li>
           <li class='list-group-item'> Priority: <%= task.priority.to_s.capitalize %> </li>
+          <% if task.share %> 
+            <li class='list-group-item'> This Task is Public </li>
+          <% else %>
+            <li class='list-group-item'> This Task is Private </li> 
+          <% end %>
         </ul>
       <div class='card-body'>
         <%= link_to "View #{task.title}", task %> 

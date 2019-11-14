@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
 
   post 'change_status', to: 'tasks#change_status'
+  post 'change_privacy', to: 'tasks#change_privacy'
   post 'search', to: 'tasks#search'
 end

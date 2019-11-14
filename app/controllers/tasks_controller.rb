@@ -60,17 +60,23 @@ class TasksController < ApplicationController
     end
   end
 
-  def change_status
-    @task = Task.find(params[:task][:task_id])
-    @task.update(status: params[:task][:status].to_i)
-    redirect_to @task
-
-  end
-
   def destroy
     @task.destroy
     redirect_to tasks_path
   end
+
+  def change_status
+    @task = Task.find(params[:task][:task_id])
+    @task.update(status: params[:task][:status].to_i)
+    redirect_to @task 
+  end
+
+  def change_privacy
+    @task = Task.find(params[:task][:task_id])
+    @task.update(share: params[:task][:share])
+    redirect_to @task 
+  end
+
 
   def confirm_delete 
   end
