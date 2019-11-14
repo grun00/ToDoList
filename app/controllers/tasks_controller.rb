@@ -79,6 +79,9 @@ class TasksController < ApplicationController
     @results = Task.where("title LIKE ?", "%#{sanitize_sql_like(params[:q])}%").where(user: current_user)
   end
   
+  def complete
+    @tasks = Task.where(user: current_user).complete
+  end
 
   private
 

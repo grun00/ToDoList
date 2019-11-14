@@ -17,26 +17,7 @@
     </ul>
   </div>
   <div class='col-10'>
-    <% @tasks.in_groups_of(3, false).each do |group| %>
-      <div class='row card-deck'>
-      <% group.each do |task| %> 
-        <div class='card col-sm-4'>
-          <h3 class='card-title align-center'><%= task.title %> </h3>
-          <div class='card-text h-100'>
-            <h4> Description: </h4>
-            <%= task.description %> 
-          </div>
-            <ul class='list-group list-group-flush'>
-              <li class='list-group-item'> Status: <%= task.status.to_s.capitalize %> </li>
-              <li class='list-group-item'> Priority: <%= task.priority.to_s.capitalize %> </li>
-            </ul>
-          <div class='card-body'>
-            <%= link_to "View #{task.title}", task %> 
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <% end %>
+    <%= render partial: 'partials/display' %>
   </div>
   </div>
 </div>

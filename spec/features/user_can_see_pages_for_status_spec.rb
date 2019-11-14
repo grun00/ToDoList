@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User can see Status pages' do
   scenario 'and visits Complete Tasks Page' do
     user = create(:user)
-    complete_task = create(:task, user: user)
+    complete_task = create(:task, user: user, title: 'CompleteTask', status: 10)
     incomplete_task = create(:task, user: user)
     login_as(user)
     
