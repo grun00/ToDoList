@@ -33,8 +33,11 @@ class TasksController < ApplicationController
       if !(@task.user == current_user)
         redirect_to root_path
       end
-  end
     end
+    if !(@task.user == current_user)
+      redirect_to root_path
+    end
+  end
 
   def new
     @task = Task.new

@@ -21,6 +21,6 @@ feature 'User can Delete Tasks' do
 
     visit task_path(task)
 
-    expect(current_path).to eq new_user_session_path
+    expect(current_path).to eq root_path
   end 
 end
