@@ -8,7 +8,7 @@ feature 'User can Delete Tasks' do
 
     visit root_path
     click_on 'Task Board'
-    click_on task.title
+    click_on "View #{task.title}"
     click_on 'Delete Task'
     click_on "Delete #{task.title}"
 
@@ -19,9 +19,9 @@ feature 'User can Delete Tasks' do
     user = create(:user)
     task = create(:task, user: user)
 
-    visit task_path(task)
-    click_on 'Delete Task'
+    visit confirm_delete_task_path(task)
+    click_on "Delete #{task.title}"
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq new_user_session_path
   end 
 end

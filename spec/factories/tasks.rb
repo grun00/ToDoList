@@ -12,6 +12,8 @@ FactoryBot.define do
 
     status { 0 }
 
+    share { false }
+
     user
   end
 end
