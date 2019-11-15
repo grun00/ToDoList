@@ -32,7 +32,7 @@ feature 'User creates a profile' do
     expect(page).to have_content('Profile Created!')
     expect(page).to have_content('Godot')
     expect(page).to have_content('A Personal Bio')
-    expect(Profile.last.attached?).to eq true
+    expect(Profile.last.avatar.attached?).to eq true
   end
 end
 

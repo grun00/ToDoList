@@ -1,0 +1,26 @@
+<div class='container border'>
+  
+  <div class='row'>
+    <h1 class='col', align='center'> Welcome, <%= @profile.nickname %>!</h1> 
+  </div>
+
+  <br>
+
+
+  <br>
+
+  <div class='row'>
+    <p class='col-2'>Profile Picture:</p> 
+    <%= image_tag(@profile.avatar, class:'img-fluid col-2 border') %> 
+    <p class='col-4 text-center text-wrap text-break'  align='center' style='white-space: initial;' >
+      Your Bio:
+      <br>
+      <%= @profile.bio %>
+    </p>
+  </div>
+
+  <br> 
+
+  </div>
+</div>
+
