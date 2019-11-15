@@ -26,7 +26,7 @@ feature 'User creates a profile' do
     visit root_path
     fill_in 'Nickname:', with: 'Godot'
     fill_in 'Bio', with: 'A Personal Bio'
-    attach_file('test-image', 'spec/support/assets/test-image.png')
+    attach_file('Your Profile Picture', 'spec/support/assets/test-image.png')
     click_on 'Create Profile'
 
     expect(page).to have_content('Profile Created!')

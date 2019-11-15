@@ -110,3 +110,4 @@ class TasksController < ApplicationController
     string.gsub(pattern) { |x| [escape_character, x].join }
   end
 end
+
