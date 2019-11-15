@@ -34,5 +34,21 @@ feature 'User creates a profile' do
     expect(page).to have_content('A Personal Bio')
     expect(Profile.last.avatar.attached?).to eq true
   end
+
+  scenario 'And Must have a Unique Nickname' do
+
+  end
+
+  scenario 'And Must have at least 5 characters' do
+
+  end
+
+  scenario 'And bio Cannot be empty' do
+
+  end
+
+  scenario 'And has a default picture if none is used' do
+
+  end
 end
 
