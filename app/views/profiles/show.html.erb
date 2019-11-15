@@ -1,7 +1,11 @@
 <div class='container border'>
   
   <div class='row'>
-    <h1 class='col', align='center'> Welcome, <%= @profile.nickname %>!</h1> 
+    <% if @profile == current_user.profile %>
+      <h1 class='col', align='center'> Welcome, <%= @profile.nickname %>!</h1> 
+    <% else %>
+      <h1 class='col', align='center'> Welcome to <%= @profile.nickname %>'s Profile!</h1> 
+    <% end %>
   </div>
 
   <br>
@@ -10,14 +14,14 @@
   <br>
 
   <div class='row'>
-    <p class='col-2'>Profile Picture:</p> 
+    <p class='col-2'><strong>Profile Picture</strong>:</p> 
     <% if @profile.avatar.attached? %>
       <%= image_tag(@profile.avatar, class:'img-fluid col-2 border') %> 
     <% else %>
       <p class='col-4'>Empty</p>
     <% end %>
     <p class='col-4 text-center text-wrap text-break'  align='center' style='white-space: initial;' >
-      Your Bio:
+      <strong>Bio</strong>:
       <br>
       <%= @profile.bio %>
     </p>
