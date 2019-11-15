@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
+  before_action :find_profile, only: %i[show edit]
  
+  def show 
+  end
+
   def new
     @profile = Profile.new
   end
@@ -16,8 +20,11 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show 
-    find_profile
+  def edit 
+  end
+
+  def update
+
   end
 
   private 

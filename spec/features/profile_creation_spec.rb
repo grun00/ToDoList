@@ -52,7 +52,7 @@ feature 'User creates a profile' do
     expect(user.profile).to eq nil
   end
 
-  scenario 'And Must have at least 5 characters' do
+  scenario 'And nickname Must have at least 5 characters' do
     user = create(:user)
     login_as(user)
 
@@ -66,6 +66,22 @@ feature 'User creates a profile' do
     expect(page).to have_content('Nickname too short, Minimum of 4 characters')
     expect(user.profile).to eq nil
   end
+
+  scenario 'And nickname Must have less than 20 characters' do
+    user = create(:user)
+    login_as(user)
+
+    visit root_path
+
+    fill_in 'Nickname:', with: "A" * 21
+    fill_in 'Bio', with: 'A Personal Bio'
+    attach_file('Your Profile Picture', 'spec/support/assets/test-image.png')
+    click_on 'Create Profile'
+
+    expect(page).to have_content('Nickname too long, Maximum of 20 characters')
+    expect(user.profile).to eq nil
+  end
+
 
   scenario 'And bio Cannot be empty' do
     user = create(:user)
@@ -96,5 +112,5 @@ feature 'User creates a profile' do
     expect(page).to have_content('Bio Max Length is 500 characters')
     expect(user.profile).to eq nil
   end 
-end
 
+end
