@@ -49,7 +49,7 @@ feature 'User creates a profile' do
     click_on 'Create Profile'
 
     expect(page).to have_content('Nickname Taken! Chose Another one')
-    expect(current_path).to eq new_profile_path 
+    expect(user.profile).to eq nil
   end
 
   scenario 'And Must have at least 5 characters' do
@@ -64,7 +64,7 @@ feature 'User creates a profile' do
     click_on 'Create Profile'
 
     expect(page).to have_content('Nickname too short, Minimum of 4 characters')
-    expect(current_path).to eq new_profile_path 
+    expect(user.profile).to eq nil
   end
 
   scenario 'And bio Cannot be empty' do
@@ -79,7 +79,7 @@ feature 'User creates a profile' do
     click_on 'Create Profile'
 
     expect(page).to have_content('Bio cannot be blank')
-    expect(current_path).to eq new_profile_path 
+    expect(user.profile).to eq nil
   end
 
   scenario 'And bio Cannot have more than 500 characters' do
@@ -94,7 +94,7 @@ feature 'User creates a profile' do
     click_on 'Create Profile'
 
     expect(page).to have_content('Bio Max Length is 500 characters')
-    expect(current_path).to eq new_profile_path 
+    expect(user.profile).to eq nil
   end
 
 
