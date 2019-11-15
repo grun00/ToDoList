@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User can Delete Tasks' do
   scenario 'Successfully' do
     user = create(:user)
+    profile = create(:profile, user: user)
     task = create(:task, user: user)
     login_as(user)
 

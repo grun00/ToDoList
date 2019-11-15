@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User can login' do
   scenario 'Sucessfully'do
     user = create(:user)
+    profile = create(:profile, user: user)
 
     visit root_path
     click_on 'Log In'
@@ -24,11 +25,12 @@ feature 'User can login' do
     click_on 'Sign up'
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
-    expect(current_path).to eq root_path
+    expect(current_path).to eq new_profile_path
   end
 
   scenario 'and can log out' do
     user = create(:user) 
+    profile = create(:profile, user: user)
     login_as(user)
 
     visit root_path

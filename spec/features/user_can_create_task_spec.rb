@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User can Create Task' do
   scenario 'Successfully' do
     user = create(:user)
+    profile = create(:profile, user: user)
     login_as(user)
 
     visit root_path
@@ -27,6 +28,7 @@ feature 'User can Create Task' do
 
   scenario 'And Title must have more than 4 characters' do
     user = create(:user)
+    profile = create(:profile, user: user)
     login_as(user)
 
     visit root_path
@@ -41,6 +43,7 @@ feature 'User can Create Task' do
 
   scenario 'And Title must have less than 20 characters' do
     user = create(:user)
+    profile = create(:profile, user: user)
     login_as(user)
 
     visit root_path
@@ -55,6 +58,7 @@ feature 'User can Create Task' do
 
   scenario 'And Description Can\'t be blank' do 
     user = create(:user)
+    profile = create(:profile, user: user)
     login_as(user)
 
     visit root_path

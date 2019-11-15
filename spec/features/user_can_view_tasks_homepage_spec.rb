@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User can view public tasks in Homepage' do
   scenario 'Sucessfully' do
     user = create(:user)
+    profile = create(:profile, user: user)
     first_task = create(:task, user: user, share: true)
     second_task = create(:task, user: user, share: true)
     third_task = create(:task, user: user, share: true)

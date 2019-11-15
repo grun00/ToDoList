@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User can search for tasks' do 
   scenario 'And find one specific name' do
     user = create(:user)
+    profile = create(:profile, user: user)
     first_task = create(:task, user: user)
     second_task = create(:task, user: user)
     login_as(user)
@@ -17,6 +18,7 @@ feature 'User can search for tasks' do
 
   scenario 'And find a partial name' do
     user = create(:user)
+    profile = create(:profile, user: user)
     first_task = create(:task, title: 'ABCTask1', user: user)
     second_task = create(:task, title: 'ABCTask2', user: user)
     third_task = create(:task, user: user)
@@ -33,6 +35,7 @@ feature 'User can search for tasks' do
 
   scenario 'And can\'t find other users tasks' do
     user = create(:user)
+    profile = create(:profile, user: user)
     other_user = create(:user)
     task = create(:task, user: other_user, title: 'Other User')
     login_as(user)

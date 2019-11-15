@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User can edit Tasks' do
   scenario 'Successfully' do
     user = create(:user)
+    profile = create(:profile, user: user)
     task = create(:task, user: user)
     login_as(user)
 
@@ -31,6 +32,7 @@ feature 'User can edit Tasks' do
 
   scenario 'And change status to complete' do
     user = create(:user)
+    profile = create(:profile, user: user)
     task = create(:task, user: user)
     login_as(user)
 
@@ -45,6 +47,7 @@ feature 'User can edit Tasks' do
 
   scenario 'And must fill all fields' do
     user = create(:user)
+    profile = create(:profile, user: user)
     task = create(:task, user: user)
     login_as(user)
 
