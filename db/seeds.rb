@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-path = Rails.root.join 'app', 'assets', 'images', 'test-image.png'
+path_user = Rails.root.join 'app', 'assets', 'images', 'test-image.png'
+path_adm = Rails.root.join 'app', 'assets', 'images', 'test-update.png'
 user = User.create(email: 'a@b.c', password: '123456')
-Profile.create(nickname: 'KillerQueen', bio: 'Just your normal User', user: user).avatar.attach(io: File.open(path), filename: "test-image.png")
+Profile.create(nickname: 'KillerQueen', bio: 'Just your normal User', user: user).avatar.attach(io: File.open(path_user), filename: "test-image.png")
 
 
 adm = User.create(email: 'adm@email.com', password: '123456')
-Profile.create(nickname: 'RadioGaga', bio: 'Just your administration User', user: adm).avatar.attach(io: File.open(path), filename: "test-image.png")
+Profile.create(nickname: 'RadioGaga', bio: 'Just your administration User', user: adm).avatar.attach(io: File.open(path_adm), filename: "test-image.png")
 
 
 for i in 0..2 do

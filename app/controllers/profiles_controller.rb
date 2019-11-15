@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :find_profile, only: %i[show edit]
+  before_action :find_profile, only: %i[show edit update]
  
   def show 
   end
@@ -24,7 +24,12 @@ class ProfilesController < ApplicationController
   end
 
   def update
-
+    if @profile.update(profile_params)
+      flash[:alert] = 'Task Updated!'
+      redirect_to @profile
+    else
+      render :edit
+    end 
   end
 
   private 
