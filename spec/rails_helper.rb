@@ -67,3 +67,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end 
 
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
+end
