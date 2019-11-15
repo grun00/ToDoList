@@ -1,7 +1,5 @@
 class ProfilesController < ApplicationController
-  skip_before_action :user_profile?, only: %i[new create]
  
-
   def new
     @profile = Profile.new
   end
@@ -13,7 +11,8 @@ class ProfilesController < ApplicationController
     if !@profile.avatar.attached?
       add_default_picture
     end
-    if @profile.save!
+    byebug
+    if @profile.save
       flash[:alert] = 'Profile Created!'
       redirect_to @profile
     else
