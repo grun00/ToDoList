@@ -8,10 +8,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.create(profile_params)
     @profile.user = current_user
     current_user.profile_id = @profile.id
-    if !@profile.avatar.attached?
-      add_default_picture
-    end
-    byebug
     if @profile.save
       flash[:alert] = 'Profile Created!'
       redirect_to @profile
@@ -34,9 +30,5 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def add_default_picture 
-    path = Rails.root.join 'app', 'assets', 'images', 'test-image.png'
-    @profile.avatar.attach(io: path, filename: "test-image.png", content_type: "image/png")
-  end
 end
   

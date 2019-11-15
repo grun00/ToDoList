@@ -95,21 +95,6 @@ feature 'User creates a profile' do
 
     expect(page).to have_content('Bio Max Length is 500 characters')
     expect(user.profile).to eq nil
-  end
-
-
-  scenario 'And has a default picture if none is used' do
-    user = create(:user)
-    login_as(user)
-
-    visit root_path
-
-    fill_in 'Nickname:', with: 'Test123'
-    fill_in 'Bio', with: "A" * 499
-    click_on 'Create Profile'
-
-    expect(Profile.last.avatar.attached?).to eq true
-  end
-
+  end 
 end
 
