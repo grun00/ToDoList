@@ -13,7 +13,7 @@ Profile.create(nickname: 'KillerQueen', bio: 'Just your normal User', user: user
 
 
 adm = User.create(email: 'adm@email.com', password: '123456')
-Profile.create(nickname: 'RadioGaga', bio: 'Just your administration User', user: adm).avatar.attach(io: File.open(path_adm), filename: "test-image.png")
+Profile.create(nickname: 'RadioGaga', bio: 'Just your administration User', user: adm, share: true).avatar.attach(io: File.open(path_adm), filename: "test-image.png")
 
 
 for i in 0..2 do
