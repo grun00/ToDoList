@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_profile, only: %i[show edit update]
+  before_action :find_profile, only: %i[show edit update change_privacy]
   before_action :public?
  
   def show 
@@ -34,11 +34,20 @@ class ProfilesController < ApplicationController
     end 
   end
 
+  def change_privacy
+    @profile.update(privacy_params)
+    redirect_to @profile
+  end
+
   private 
 
   def profile_params
     params.require(:profile).permit(:nickname, :bio, :avatar, :user_id)
   end 
+
+  def privacy_params
+    params.require(:profile).permit(:share)
+  end
 
   def find_profile
     @profile = Profile.find(params[:id])

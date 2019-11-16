@@ -28,6 +28,7 @@
   </div>
 
   <br> 
+
     <div class='row'>
       <p class='col-4'></p>
       <% if current_user == @profile.user %> 
@@ -36,7 +37,15 @@
       <%= link_to 'Go Back', :back, class: 'btn btn-secondary col-2' %>
     </div>
 
+    <% if current_user == @profile.user %>
+      <%= form_for(@profile, url: change_privacy_profile_path, method: :post) do |f| %>
+        <strong><%= f.label :share, 'Change Privacy:' %></strong>
+        <%= f.select(:share, [['Private', false], ['Public', true]]) %>
+        <%= f.hidden_field :profile_id, value: params[:id] %>
+        <%= f.submit 'Change Setting' %>
+      <% end %>
+    <% end %>
 
-  </div>
 </div>
+
 
