@@ -9,7 +9,7 @@ feature 'User can search for tasks' do
     login_as(user)
 
     visit root_path
-    fill_in 'Search:', with: first_task.title
+    fill_in 'Search Tasks:', with: first_task.title
     find('#search-btn').click
 
     expect(page).to have_content(first_task.title)
@@ -25,7 +25,7 @@ feature 'User can search for tasks' do
     login_as(user)
 
     visit root_path
-    fill_in 'Search:', with: 'ABC'
+    fill_in 'Search Tasks:', with: 'ABC'
     find('#search-btn').click
 
     expect(page).to have_content(first_task.title)
@@ -41,7 +41,7 @@ feature 'User can search for tasks' do
     login_as(user)
 
     visit root_path
-    fill_in 'Search:', with: task.title
+    fill_in 'Search Tasks:', with: task.title
     find('#search-btn').click
 
     expect(page).to have_content('0 Results Found')

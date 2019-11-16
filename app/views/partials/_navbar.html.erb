@@ -2,11 +2,22 @@
     <%= link_to 'NavBrand', root_path, class: 'nav-brand btn btn-outline-primary' %>
     <% if (user_signed_in?)%>
 
-      <%= link_to 'Task Board', tasks_path, class: '' %> 
-      <%= link_to 'Complete Tasks', complete_tasks_path, class: '' %> 
-      <%= link_to 'Incomplete Tasks', incomplete_tasks_path, class: '' %> 
+      <div class="btn-group ml-3">
+        <button type="button" class="btn btn-outline-success"> My Tasks</button> 
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <div class="dropdown-divider"></div>
+          <%= link_to 'Task Board', tasks_path, class: 'dropdown-item btn btn-primary'%>
+          <%= link_to 'Complete Tasks', complete_tasks_path, class: 'dropdown-item' %> 
+          <%= link_to 'Incomplete Tasks', incomplete_tasks_path, class: 'dropdown-item' %> 
+          <div class="dropdown-divider"></div>
+            <%= link_to 'Create a Task', new_task_path, class: 'btn btn-outline-success ml-3' %>
+        </div>
+      </div>
 
-      <%= link_to 'Create a Task', new_task_path, class: 'btn btn-outline-success ml-3' %>
+      
 
       <% if current_user.profile && current_user.profile.id %>
         <%= link_to 'My Profile', profile_path(current_user.profile), class: 'btn btn-outline-success ml-2' %>
@@ -15,32 +26,14 @@
       <div class='nav-item text-white nav-link'>
         <%= form_with(url: search_tasks_path, local: true) do %>
           <%= label_tag(:q, 'Search Tasks:', class: '') %>
-          <%= text_field_tag :q, nil, class: '' %>
-          <%= button_tag type: 'submit', class: "btn btn-outline-primary btn-sm", id: 'search-btn' do %>
-                  <i class="fa fa-search" aria-hidden="true"></i>
+          <%= text_field_tag :q, nil, class: 'mr-0' %>
+          <%= button_tag type: 'submit', class: "btn btn-outline-primary btn-sm ml-0", id: 'search-btn' do %>
+                  <i class="fa fa-search " aria-hidden="true"></i>
               <% end %>
         <% end %>
-      </div>
+      </div> 
 
-
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
-  </div>
-</div>
-
-
-      
-
-      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger ml-3'%> 
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger ml-auto'%> 
 
     <% else %> 
      <%=link_to 'Log In', new_user_session_path, class: 'btn btn-outline-primary ml-auto' %>
