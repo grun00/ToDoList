@@ -13,5 +13,7 @@ FactoryBot.define do
     trait :with_avatar do
       avatar { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test-image.png'), 'image/png') }
     end
+
+    share { false }
   end
 end
