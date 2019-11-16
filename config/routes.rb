@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'confirm_delete', on: :member
     get 'complete', on: :collection
     get 'incomplete', on: :collection
+    post 'search', on: :collection
   end
 
   resources :profiles do
@@ -14,5 +15,4 @@ Rails.application.routes.draw do
 
   post 'change_status', to: 'tasks#change_status'
   post 'change_privacy', to: 'tasks#change_privacy'
-  post 'search', to: 'tasks#search'
 end
