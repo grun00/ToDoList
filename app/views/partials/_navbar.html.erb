@@ -1,28 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <%= link_to 'NavBrand', root_path, class: 'nav-brand' %>
+    <%= link_to 'NavBrand', root_path, class: 'nav-brand btn btn-outline-primary' %>
     <% if (user_signed_in?)%>
-      <%= link_to 'Task Board', tasks_path, class: 'nav-item nav-link active' %> 
-      <%= link_to 'Create a Task', new_task_path, class: 'nav-link' %>
-      <%= link_to 'Complete Tasks', complete_tasks_path, class: 'nav-item nav-link active' %> 
-      <%= link_to 'Incomplete Tasks', incomplete_tasks_path, class: 'nav-item nav-link active' %> 
-      <% if current_user.profile && current_user.profile.id %>
-        <%= link_to 'My Profile', profile_path(current_user.profile), class: 'nav-link' %>
-      <% end %>
-      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link'%> 
+
+      <%= link_to 'Task Board', tasks_path, class: '' %> 
+      <%= link_to 'Complete Tasks', complete_tasks_path, class: '' %> 
+      <%= link_to 'Incomplete Tasks', incomplete_tasks_path, class: '' %> 
+
+      <%= link_to 'Create a Task', new_task_path, class: 'btn btn-outline-success ml-3' %>
 
       <div class='nav-item text-white nav-link'>
         <%= form_with(url: search_tasks_path, local: true) do %>
-          <%= label_tag(:q, 'Search:') %>
-          <%= text_field_tag(:q) %>
-          <%= button_tag type: 'submit', class: "btn btn-primary", id: 'search-btn' do %>
+          <%= label_tag(:q, 'Search Tasks:', class: '') %>
+          <%= text_field_tag :q, nil, class: '' %>
+          <%= button_tag type: 'submit', class: "btn btn-outline-primary btn-sm", id: 'search-btn' do %>
                   <i class="fa fa-search" aria-hidden="true"></i>
               <% end %>
         <% end %>
       </div>
 
-    <% else %>
-     <%=link_to 'Log In', new_user_session_path, class: 'nav-item nav-link active' %>
-     <%=link_to 'Create Account', new_user_registration_path, class: 'nav-item nav-link active' %>
+      <% if current_user.profile && current_user.profile.id %>
+        <%= link_to 'My Profile', profile_path(current_user.profile), class: 'btn btn-outline-success ml-auto' %>
+      <% end %>
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger ml-3'%> 
+
+    <% else %> 
+     <%=link_to 'Log In', new_user_session_path, class: 'btn btn-outline-primary ml-auto' %>
+     <%=link_to 'Create Account', new_user_registration_path, class: 'btn btn-outline-success ml-3' %>
     <% end %>
     </nav>
     <p class="notice"><%= notice %></p>

@@ -4,17 +4,19 @@
 <div class='container'>
 <div class='row'>
   <div class='col-2'>
-    <ul class='nav flex-column nav-light bg-dark'> 
-      <h6 class='nav-item text-white'> Ordering Options</h6>
-      <li class='nav-item ' role='tab'> <%= link_to 'By Title(asc)', tasks_path(order: 'asc'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'By Title(des)', tasks_path(order: 'des'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'Low Priority First', tasks_path(order: 'low'), class: 'text-white nav-link', id: 'ord_low'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'Complete First', tasks_path(order: 'comp'), class: 'text-white nav-link', id: 'ord_comp'%>  </li>
-      <li class='nav-item ' role='tab'> <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: 'text-white nav-link', id: 'ord_incomp'%>  </li>
-    </ul>
+    <nav>
+      <ul class='nav flex-column nav-light bg-dark'> 
+        <h6 class='nav-item text-white'> Ordering Options</h6>
+        <li class='nav-item ' role='tab'> <%= link_to 'By Title(asc)', tasks_path(order: 'asc'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'By Title(des)', tasks_path(order: 'des'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'Low Priority First', tasks_path(order: 'low'), class: 'text-white nav-link', id: 'ord_low'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'Complete First', tasks_path(order: 'comp'), class: 'text-white nav-link', id: 'ord_comp'%>  </li>
+        <li class='nav-item ' role='tab'> <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: 'text-white nav-link', id: 'ord_incomp'%>  </li>
+      </ul>
+    <nav>
   </div>
   <div class='col-10'>
     <%= render partial: 'partials/display' %>

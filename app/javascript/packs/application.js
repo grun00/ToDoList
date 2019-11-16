@@ -23,3 +23,4 @@ require("channels")
 //= require bootstrap
 //= require bootstrap-tab
 //= require bootstrap-pills
+//= require_tree
