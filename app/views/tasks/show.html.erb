@@ -3,7 +3,17 @@
   <div class='row'>
     <h1 class='col', align='center'> <%= @task.title %> </h1>
   </div>
+
   <br>
+
+  <div class='row'> 
+    <p class='col-5'></p>
+    <p class='col-4'> <strong>Owner</strong>: <%= @task.user.profile.nickname %> </p>
+  </div>
+
+  <br>
+
+
   <div class='row'>
     <p class='col-4'></p>
     <p class='col-4 text-center text-wrap text-break'  align='center' style='white-space: initial;' > <%= @task.description.to_s %> </p>
