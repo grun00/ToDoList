@@ -3,10 +3,10 @@ require 'rails_helper'
 feature 'User can Update profile' do
   scenario 'Bio' do 
     user = create(:user)
-    create(:profile, user: user)
+    create(:profile, user: user) 
     login_as(user)
 
-    visit root_path
+    visit root_path 
     click_on 'My Profile'
     click_on 'Edit Info'
 

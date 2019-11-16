@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :public?
   before_action :find_profile, only: %i[show edit update]
+  before_action :public?
  
   def show 
   end
@@ -46,7 +46,6 @@ class ProfilesController < ApplicationController
 
   def public?
     unless (current_user.profile == @profile)
-      find_profile
       unless @profile.share
         redirect_to root_path
       end

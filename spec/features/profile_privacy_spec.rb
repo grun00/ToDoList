@@ -21,7 +21,6 @@ feature 'A profile has a share status' do
     profile = create(:profile, user: other_user)
     login_as(user)
 
-    byebug
     visit profile_path(profile.id)
 
     expect(current_path).to eq root_path
