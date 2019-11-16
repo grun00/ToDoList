@@ -50,7 +50,7 @@
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <% if current_user == @task.user %>
-      <%= form_for(@task, url: change_privacy_path, method: :post) do |f| %>
+      <%= form_for(@task, url: change_privacy_task_path, method: :post) do |f| %>
         <strong><%= f.label :share, 'Change Privacy:' %></strong>
         <%= f.select(:share, [['Private', false], ['Public', true]]) %>
         <%= f.hidden_field :task_id, value: params[:id] %>
@@ -64,7 +64,7 @@
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <% if current_user == @task.user %>
-      <%= form_for(@task, url: change_status_path, method: :post) do |f| %>
+      <%= form_for(@task, url: change_status_task_path, method: :post) do |f| %>
         <strong><%= f.label :status, 'Change Status:' %></strong>
         <%= f.select(:status, [['Incomplete', 0], ['Complete', 10]]) %>
         <%= f.hidden_field :task_id, value: params[:id] %>

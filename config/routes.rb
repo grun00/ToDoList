@@ -7,12 +7,12 @@ Rails.application.routes.draw do
     get 'complete', on: :collection
     get 'incomplete', on: :collection
     post 'search', on: :collection
+    post 'change_status', on: :member
+    post 'change_privacy', on: :member
   end
 
   resources :profiles do
     post 'change_privacy', on: :member
   end
 
-  post 'change_status', to: 'tasks#change_status'
-  post 'change_privacy', to: 'tasks#change_privacy'
 end
