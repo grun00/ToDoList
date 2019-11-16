@@ -1,7 +1,7 @@
 <% @tasks.in_groups_of(3, false).each do |group| %>
   <div class='row card-deck '>
   <% group.each do |task| %> 
-    <div class='card col-3 text-center'>
+    <div class='card col-4 text-center'>
       <h3 class='card-title align-center'><%= task.title %> </h3>
       <div class='card-text h-100'>
         <h4> Description: </h4>
