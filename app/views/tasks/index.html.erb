@@ -3,20 +3,28 @@
 
 <div class='container'>
 <div class='row'>
-  <div class='col-2'>
-    <nav>
-      <ul class='nav flex-column nav-light bg-dark'> 
-        <h6 class='nav-item text-white'> Ordering Options</h6>
-        <li class='nav-item ' role='tab'> <%= link_to 'By Title(asc)', tasks_path(order: 'asc'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'By Title(des)', tasks_path(order: 'des'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'Newest First', tasks_path(order: 'new'), class: 'text-white nav-link', id: 'ord_new'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'Oldest First', tasks_path(order: 'old'), class: 'text-white nav-link', id: 'ord_old'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'High Priority First', tasks_path(order: 'high'), class: 'text-white nav-link', id: 'ord_high'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'Low Priority First', tasks_path(order: 'low'), class: 'text-white nav-link', id: 'ord_low'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'Complete First', tasks_path(order: 'comp'), class: 'text-white nav-link', id: 'ord_comp'%>  </li>
-        <li class='nav-item ' role='tab'> <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: 'text-white nav-link', id: 'ord_incomp'%>  </li>
-      </ul>
-    <nav>
+  <div class='col-2'> 
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Sorting By</button>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu"> 
+        <div class="dropdown-divider"></div>
+          <%= link_to 'Title(asc)', tasks_path(order: 'asc'), class: ' dropdown-item', id: 'ord_new'%>
+          <%= link_to 'Title(des)', tasks_path(order: 'des'), class: ' dropdown-item', id: 'ord_new'%>
+        <div class="dropdown-divider"></div>
+          <%= link_to 'Newest', tasks_path(order: 'new'), class: ' dropdown-item', id: 'ord_new'%>
+          <%= link_to 'Oldest', tasks_path(order: 'old'), class: ' dropdown-item', id: 'ord_old'%>
+        <div class="dropdown-divider"></div>
+          <%= link_to 'Highest Priority', tasks_path(order: 'high'), class: ' dropdown-item', id: 'ord_high'%>
+          <%= link_to 'Lowest Priority', tasks_path(order: 'low'), class: ' dropdown-item', id: 'ord_low'%>
+        <div class="dropdown-divider"></div>
+          <%= link_to 'Complete First', tasks_path(order: 'comp'), class: ' dropdown-item', id: 'ord_comp'%>
+          <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: ' dropdown-item', id: 'ord_incomp'%>
+      </div>
+    </div> 
+
   </div>
   <div class='col-10'>
     <%= render partial: 'partials/display' %>

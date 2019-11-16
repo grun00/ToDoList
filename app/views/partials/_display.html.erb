@@ -1,7 +1,7 @@
 <% @tasks.in_groups_of(3, false).each do |group| %>
-  <div class='row card-deck'>
+  <div class='row card-deck '>
   <% group.each do |task| %> 
-    <div class='card col-sm-4'>
+    <div class='card col-3 text-center'>
       <h3 class='card-title align-center'><%= task.title %> </h3>
       <div class='card-text h-100'>
         <h4> Description: </h4>
@@ -18,9 +18,10 @@
           <% end %>
         </ul>
       <div class='card-body'>
-        <%= link_to "View #{task.title}", task %> 
+        <%= link_to "View #{task.title}", task, class: 'btn btn-outline-primary' %> 
       </div>
     </div>
   <% end %>
 </div>
+<br>
 <% end %>
