@@ -8,7 +8,7 @@
         <%= task.description %> 
       </div>
         <ul class='list-group list-group-flush'> 
-          <li class='list-group-item'> Owner: <%= task.user.profile.nickname %> </li>
+          <li class='list-group-item'> Owner: <%= link_to task.user.profile.nickname, profile_path(task.user.profile.id) %> </li>
           <li class='list-group-item'> Status: <%= task.status.to_s.capitalize %> </li>
           <li class='list-group-item'> Priority: <%= task.priority.to_s.capitalize %> </li>
           <% if task.share %> 
