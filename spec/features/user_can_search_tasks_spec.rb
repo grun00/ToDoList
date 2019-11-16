@@ -19,9 +19,9 @@ feature 'User can search for tasks' do
   scenario 'And find a partial name' do
     user = create(:user)
     profile = create(:profile, user: user)
-    first_task = create(:task, title: 'ABCTask1', user: user)
-    second_task = create(:task, title: 'ABCTask2', user: user)
-    third_task = create(:task, user: user)
+    first_task = create(:task, title: 'ABCTask1', user: user, share: true)
+    second_task = create(:task, title: 'ABCTask2', user: user, share: true)
+    third_task = create(:task, user: user, share: true)
     login_as(user)
 
     visit root_path
