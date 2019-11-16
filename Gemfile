@@ -19,7 +19,7 @@ gem 'jquery-rails'
 #sprockets-rails
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 #BootStrap
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.3.1'
 #Orderly for testing 
 gem 'orderly'
 #FactoryBot for testing
