@@ -15,11 +15,11 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require jquery
+//= require jquery_ujs
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require bootstrap-tab
 //= require bootstrap-pills
-//= require jquery
-//= require jquery_ujs
