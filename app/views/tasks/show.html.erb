@@ -94,7 +94,7 @@
               <%= f.label :body, "Make a Comment", class: 'panel-heading', rows: '3', placeholder: 'your comment here...'%>
             </div>
             <div class='panel-body'>
-              <%= f.text_area :body, class: 'form-controll' %>
+              <%= f.text_area :body, class: 'form-controll', size: "30x5" %>
               <%= f.hidden_field :task_id, value: params[:id] %>
               <br>
               <%= f.submit 'Post Comment' %>

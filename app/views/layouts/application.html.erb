@@ -10,7 +10,12 @@
   </head> 
   <body>
     <%= render partial: 'partials/navbar' %>
-    <p class="alert"><%= alert %></p> 
+    <div class=''>
+      <p class="alert text-center text-danger"><%= alert %></p> 
+    </div>
+    <div class=''>
+      <p class="notice text-center bd-callout bd-callout-info text-success"><%= notice %></p> 
+    </div>
     <%= yield %>
   </body>
 </html>
