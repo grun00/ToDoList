@@ -1,11 +1,11 @@
 <div class='container border'>
-  
+  <!-- Task Title and heading --> 
   <div class='row'>
     <h1 class='col', align='center'> <%= @task.title %> </h1>
   </div>
 
   <br>
-
+  <!-- informarions about task creator --> 
   <div class='row'> 
     <p class='col-5'></p>
     <p class='col-4'> <strong>Owner</strong>: 
@@ -19,7 +19,7 @@
 
   <br>
 
-
+  <!-- current information about task --> 
   <div class='row'>
     <p class='col-4'></p>
     <p class='col-4 text-center text-wrap text-break'  align='center' style='white-space: initial;' > <%= @task.description.to_s %> </p>
@@ -28,13 +28,11 @@
   <div class='row text-center' align='center'> 
     <p class='col-4'></p>
     <p class='col-4 text-center'> <strong> Priority: </strong> <%= @task.priority.to_s.capitalize %> </p>
-  </div>
-
+  </div> 
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <p class='col-4'> <strong> Current Status</strong> <%= @task.status.to_s.capitalize %> </p>
   </div> 
-
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <p class='col-4'>
@@ -47,6 +45,7 @@
     </p> 
   </div> 
 
+  <!-- Privacy Setting --> 
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <% if current_user == @task.user %>
@@ -59,8 +58,7 @@
     <% end %> 
   </div>
 
-
-
+  <!-- Status Setting --> 
   <div class='row text-center' align='center'>
     <p class='col-4'></p>
     <% if current_user == @task.user %>
@@ -73,69 +71,67 @@
     <% end %> 
   </div>
   <br>
+
+  <!-- Eddit/Delete/Back Buttons--> 
   <div class='row text-center' align='center'>
     <p class='col-4'></p> 
-
     <% if current_user == @task.user %>
       <p class='btn btn-secondary col-2'> <%= link_to 'Edit Task', edit_task_path(@task), class: 'text-white'%> </p>
       <p class='btn btn-danger col-2'> <%= link_to 'Delete Task', confirm_delete_task_path(@task), class: 'text-white' %> </p>
     <% else %> 
       <%= link_to 'Go Back', :back, class: 'btn btn-secondary col-4' %>
     <% end %> 
+  </div> 
 
-  </div>
-
+  <!--Post Comment Section --> 
   <div class="row">
-        <p class='col-4'></p>
-        <div class="col-4 text-center">
-            <div class="comment-wrapper">
-                <div class="panel panel-info">
-                    <%= form_for(@comment, url: make_comment_task_path, method: :post) do |f| %>
-                      <div class='panel-heading'>
-                        <%= f.label :body, "Make a Comment", class: 'panel-heading', rows: '3', placeholder: 'your comment here...'%>
-                      </div>
-                      <div class='panel-body'>
-                        <%= f.text_area :body, class: 'form-controll' %>
-                        <%= f.hidden_field :task_id, value: params[:id] %>
-                        <br>
-                        <%= f.submit 'Post Comment' %>
-                      </div> 
-                    <% end %>
-                    <hr>
-                    <br>
-                    <div class="clearfix"></div> 
+    <p class='col-4'></p>
+    <div class="col-4 text-center">
+      <div class="comment-wrapper">
+        <div class="panel panel-info">
+          <%= form_for(@comment, url: make_comment_task_path, method: :post) do |f| %>
+            <div class='panel-heading'>
+              <%= f.label :body, "Make a Comment", class: 'panel-heading', rows: '3', placeholder: 'your comment here...'%>
             </div>
-          </div>
+            <div class='panel-body'>
+              <%= f.text_area :body, class: 'form-controll' %>
+              <%= f.hidden_field :task_id, value: params[:id] %>
+              <br>
+              <%= f.submit 'Post Comment' %>
+            </div> 
+          <% end %>
+          <hr>
+          <br>
+          <div class="clearfix"></div> 
         </div>
-
-      <% if @task.comments.any? %>
-        <ul class='media-list'>
-          <% @task.comments.each do |comment| %> 
-            <li class="media">
-              <% if comment.user.profile.avatar.attached? %>
-                  <%= image_tag comment.user.profile.avatar, class: 'float-left img-thumbnail thumbnail img-fluid col-2' %>
-              <% end %>
-              <div class="media-body">
-                  <span class="text-muted pull-right">
-                    <small class="text-muted"><%= comment.created_at %></small>
-                  </span>
-                    <strong class="text-success"><%= link_to "@#{comment.user.profile.nickname}", profile_path(comment.user.profile)%></strong>
-                  <p>
-                    <%= comment.body %>
-                  </p>
-              </div>
-            </li>
-            <hr>
-            <br>
-          <% end %> 
-        </ul> 
-      <% end %>
-
-
-
-
-      
+      </div>
     </div>
+
+    <!--Comment Section --> 
+    <% if @task.comments.any? %>
+      <ul class='media-list'>
+        <% @task.comments.each do |comment| %> 
+          <li class="media">
+            <% if comment.user.profile.avatar.attached? %>
+              <%= image_tag comment.user.profile.avatar, class: 'float-left img-thumbnail thumbnail img-fluid col-2' %>
+            <% end %>
+            <div class="media-body">
+              <span class="text-muted pull-right">
+                <small class="text-muted"><%= comment.created_at.strftime("Posted on %m/%d/%Y at: %I:%M%p") %></small>
+              </span>
+                <strong class="text-success"><%= link_to "@#{comment.user.profile.nickname}", profile_path(comment.user.profile)%></strong>
+              <p>
+                <%= comment.body %>
+              </p>
+            </div>
+          </li>
+          <hr>
+          <br>
+        <% end %> 
+      </ul> 
+    <% end %> 
+    </div>
+
   </div>
 
 
