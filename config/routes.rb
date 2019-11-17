@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post 'search', on: :collection
     post 'change_status', on: :member
     post 'change_privacy', on: :member
+    post 'make_comment', on: :member
   end
 
   resources :profiles do

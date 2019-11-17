@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  enum like: {none: 0, liked: 10, disliked: 20}
+  enum like_status: {neither: 0, like: 10, dislike: 20}
 
   belongs_to :user
   belongs_to :task

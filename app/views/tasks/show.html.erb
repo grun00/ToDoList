@@ -82,8 +82,67 @@
     <% else %>
       <p class='btn btn-secondary col-2'> <%= link_to 'Go Back', root_path, class: 'text-white'%> </p>
       <p class='btn btn-danger col-2'> <%= link_to 'Go Back in Red', root_path, class: 'text-white' %> </p>
-    <% end %>
+    <% end %> 
 
   </div>
-</div>
+
+<div class="row">
+      <p class='col-4'></p>
+      <div class="col-4 text-center">
+          <div class="comment-wrapper">
+              <div class="panel panel-info">
+                  <%= form_for(@comment, url: make_comment_task_path, method: :post) do |f| %>
+                    <div class='panel-heading'>
+                      <%= f.label :body, "Make a Comment", class: 'panel-heading', rows: '3', placeholder: 'your comment here...'%>
+                    </div>
+                    <div class='panel-body'>
+                      <%= f.text_area :body, class: 'form-controll' %>
+                      <%= f.hidden_field :task_id, value: params[:id] %>
+                      <br>
+                      <%= f.submit 'Post Comment' %>
+                    </div> 
+                  <% end %>
+                  <hr>
+                  <br>
+                  <div class="clearfix"></div> 
+          </div>
+        </div>
+      </div>
+
+      <% if @task.comments.any? %>
+        <ul class='media-list'>
+          <% @task.comments.each do |comment| %> 
+            <li class="media">
+              <% if comment.user.profile.avatar.attached? %>
+                <a href='#' class='pull-left'>
+                  <%= image_tag comment.user.profile.avatar, class: 'img-fluid' %>
+                </a> 
+              <% end %>
+              <div class="media-body">
+                  <span class="text-muted pull-right">
+                    <small class="text-muted"><%= comment.created_at %></small>
+                  </span>
+                  <% if comment.user.profile.share %>
+                    <strong class="text-success">@<%= link_to comment.user.profile.nickname, profile_path(comment.user.profile) %></strong>
+                  <% else %>
+                    <strong class="text-success">@<%= comment.user.profile.nickname %></strong>
+                  <% end %>
+                  <p>
+                    <%= comment.body %>
+                  </p>
+              </div>
+            </li>
+            <hr>
+            <br>
+          <% end %> 
+        </ul> 
+      <% end %>
+
+
+
+
+      
+    </div>
+  </div>
+
 

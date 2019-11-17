@@ -9,7 +9,7 @@ feature 'User can make comments' do
 
     visit task_path(task)
     fill_in 'Comment', with: 'Test Comment'
-    click_on 'Make Comment'
+    click_on 'Post Comment'
 
     expect(page).to have_content('Comment Added!')
     expect(page).to have_content('Test Comment')

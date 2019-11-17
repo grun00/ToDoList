@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     if @task.share == false and (@task.user != current_user)
       redirect_to root_path
     end
+    @comment = Comment.new
   end
 
   def new
@@ -94,6 +95,18 @@ class TasksController < ApplicationController
     @tasks = Task.where(user: current_user).incomplete
   end
 
+  def make_comment
+    @comment = Comment.create(comment_params)
+    @comment.user = current_user
+    @comment.task = find_task
+    if @comment.save
+      flash[:alert] = 'Comment Added!'
+      redirect_to @task
+    else
+      render :show
+    end
+  end
+
   private
 
   def task_params
@@ -104,6 +117,10 @@ class TasksController < ApplicationController
 
   def find_task
     @task = Task.find(params[:id])
+  end 
+
+  def comment_params
+    params.require(:comment).permit(:body)
   end 
 
   def sanitize_sql_like(string, escape_character = "\\")
