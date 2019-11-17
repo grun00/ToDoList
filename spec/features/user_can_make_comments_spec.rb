@@ -98,6 +98,16 @@ feature 'User can make comments' do
   end
 
   scenario 'And can Like a comment' do
+    user = create(:user)
+    create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Like'
+
+    expect(comment.likes.count).to eq 1
 
   end
 
