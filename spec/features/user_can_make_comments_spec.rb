@@ -24,9 +24,9 @@ feature 'User can make comments' do
 
     visit task_path(task)
     fill_in 'Comment', with: 'First Comment'
-    click_on 'Make Comment'
+    click_on 'Post Comment'
     fill_in 'Comment', with: 'Second Comment'
-    click_on 'Make Comment'
+    click_on 'Post Comment'
 
     expect(page).to have_content('First Comment')
     expect(page).to have_content('Second Comment')
@@ -41,7 +41,7 @@ feature 'User can make comments' do
 
     visit task_path(task)
     fill_in 'Comment', with: ''
-    click_on 'Make Comment'
+    click_on 'Post Comment'
 
     expect(page).to have_content('Comment body can\'t be blank')
     expect(page).not_to have_content('Test Comment')
@@ -55,8 +55,8 @@ feature 'User can make comments' do
     comment = create(:comment, user: user, task: task)
     login_as(user)
 
-    visit task_path(task)
-    click_on user.nickname
+    visit tasks_path(task)
+    click_on "@#{user.profile.nickname}"
 
     expect(current_path).to eq profile_path(user) 
 

@@ -103,6 +103,7 @@ class TasksController < ApplicationController
       flash[:alert] = 'Comment Added!'
       redirect_to @task
     else
+      flash.now[:alert] = 'Comment body can\'t be blank'
       render :show
     end
   end

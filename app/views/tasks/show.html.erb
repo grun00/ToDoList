@@ -123,7 +123,7 @@
                     <small class="text-muted"><%= comment.created_at %></small>
                   </span>
                   <% if comment.user.profile.share %>
-                    <strong class="text-success">@<%= link_to comment.user.profile.nickname, profile_path(comment.user.profile) %></strong>
+                    <strong class="text-success"><%= link_to "@#{comment.user.profile.nickname}", profile_path(comment.user.profile)%></strong>
                   <% else %>
                     <strong class="text-success">@<%= comment.user.profile.nickname %></strong>
                   <% end %>
