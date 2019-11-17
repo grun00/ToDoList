@@ -23,7 +23,7 @@ feature 'A profile has a share status' do
 
     visit profile_path(profile.id)
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq private_page_profile_path(profile)
 
   end
 

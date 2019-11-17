@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :profiles do
+    get 'private_page', on: :member
     post 'change_privacy', on: :member
   end
 
