@@ -123,6 +123,24 @@
               <p>
                 <%= comment.body %>
               </p>
+              <small class='text-muted'> 
+                <% if comment.user == current_user %>
+
+                  <%= button_to delete_comment_task_path(comment_id: comment.id), method: :delete, data: {confirm: 'Delete Comment?'}, class: 'btn btn-outline-danger btn-sm' do %> 
+                  <i class='fa fa-trash'> Delete</i>
+                <% end %>
+                <% else %>
+                <%= button_tag class: 'btn btn-outline-default btn-sm' do %> 
+                  <i class='fa fa-trash'> Delete</i>
+                <% end %>
+                <% end %>
+
+
+
+
+                <i class='fa fa-plus-square'> Like</i>
+                <i class='fa fa-minus-square'> Dislike</i> 
+              </small> 
             </div>
           </li>
           <hr>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'change_status', on: :member
     post 'change_privacy', on: :member
     post 'make_comment', on: :member
+    delete 'delete_comment', on: :member
   end
 
   resources :profiles do

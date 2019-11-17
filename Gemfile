@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+#Data-Confirm Modals
+gem 'data-confirm-modal', '~> 1.6', '>= 1.6.2'
 #SimpleCov 
 gem 'simplecov', require: false, group: :test
 #FontAwesome

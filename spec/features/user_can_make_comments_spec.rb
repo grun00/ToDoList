@@ -80,17 +80,17 @@ feature 'User can make comments' do
   end
 
   scenario 'And can Delete a Comment' do
-    # user = create(:user)
-    # create(:profile, user: user, share: true)
-    # task = create(:task, user: user)
-    # comment = create(:comment, user: user, task: task)
-    # login_as(user)
-    #
-    # visit task_path(task)
-    # click_on 'Delete Comment'
-    # click_on 'Yes'
-    #
-    # expect(Comment.last).not_to eq comment
+    user = create(:user)
+    create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Delete'
+    click_on 'Ok'
+    
+    expect(page).not_to have_content(comment.body)
 
   end
 

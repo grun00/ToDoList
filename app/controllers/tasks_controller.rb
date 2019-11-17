@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, only: %i[index new create destroy search]
   before_action :user_profile?
-  before_action :find_task, only: %i[edit update show confirm_delete destroy]
+  before_action :find_task, only: %i[edit update show confirm_delete destroy delete_comment]
   skip_before_action :verify_authenticity_token, only: %i[search]
   
   def index
@@ -108,6 +108,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def delete_comment
+    @comment = Comment.find(params[:comment_id])
+    if @comment.user == current_user 
+      @comment.destroy
+    end
+    redirect_to @task
+  end
+
   private
 
   def task_params
@@ -123,6 +131,9 @@ class TasksController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body)
   end 
+
+  def find_comment
+  end
 
   def sanitize_sql_like(string, escape_character = "\\")
     pattern = Regexp.union(escape_character, "%", "_")
