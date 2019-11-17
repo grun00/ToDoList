@@ -12,13 +12,11 @@
     <small class='col-4'> This Profile is <%= @profile.share ? 'Public' : 'Private' %></small>
   </div>
 
+  <br> 
+
   <br>
 
-
-  <br>
-
-  <div class='row'>
-
+  <div class='row'> 
     <p class='col-2'><strong>Profile Picture</strong>:</p> 
     <% if @profile.avatar.attached? %>
       <%= image_tag(@profile.avatar, class:'img-fluid col-2 border') %> 
@@ -38,14 +36,11 @@
   <div class='row'>
     <p class='col-4'></p>
       <% if current_user == @profile.user %>
-        <%= form_for(@profile, url: change_privacy_profile_path, method: :post, class: 'form-inline') do |f| %>
-          
+        <%= form_for(@profile, url: change_privacy_profile_path, method: :post, class: 'form-inline') do |f| %> 
         <div class='form-group'>
           <strong class='text-center'><%= f.label :share, 'Change Privacy:' %></strong>
-          <%= f.select(:share, [['Private', false], ['Public', true]]) %>
-
-          <%= f.hidden_field :profile_id, value: params[:id] %>
-
+          <%= f.select(:share, [['Private', false], ['Public', true]]) %> 
+          <%= f.hidden_field :profile_id, value: params[:id] %> 
           <%= f.submit 'Change Setting' %>
         </div>
         <% end %>
@@ -63,9 +58,7 @@
     </div>
     <br>
     <br>
-    <br>
-
-
+    <br> 
 </div>
 
 
