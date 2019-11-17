@@ -13,9 +13,10 @@ Rails.application.routes.draw do
     delete 'delete_comment', on: :member
   end
 
-  resources :profiles do
+  resources :profiles, only: %i[show new create update edit] do
     get 'private_page', on: :member
     post 'change_privacy', on: :member
+    resources :comments, only: %i[index]
   end
 
 end

@@ -24,9 +24,26 @@
       </div> 
 
       <!-- Profile Settings -->
-      <% if current_user.profile && current_user.profile.id %>
-        <%= link_to 'My Profile', profile_path(current_user.profile), class: 'btn btn-outline-success ml-2' %>
+      <!-- Dropdown -->
+      <div class="btn-group ml-3">
+        <button type="button" class="btn btn-outline-success"> My Account</button> 
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu"> 
+          <% if current_user.profile && current_user.profile.id %>
+            <%= link_to 'My Profile', profile_path(current_user.profile),
+              class: 'btn btn-outline-success ml-2' %>
+            <%= link_to 'My Comments', profile_comments_path(current_user.profile),
+              class: 'btn btn-outline-success ml-2' %>
       <% end %>
+        </div>
+      </div> 
+
+
+
+
+      
 
       <!-- Search -->
       <div class='nav-item text-white nav-link ml-auto mr-auto'>
