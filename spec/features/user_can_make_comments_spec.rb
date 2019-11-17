@@ -80,6 +80,7 @@ feature 'User can make comments' do
   end
 
   scenario 'And can Delete a Comment' do
+    pending
     user = create(:user)
     create(:profile, user: user, share: true)
     task = create(:task, user: user)
@@ -88,7 +89,9 @@ feature 'User can make comments' do
 
     visit task_path(task)
     click_on 'Delete'
-    click_on 'Ok'
+    page.accept_alert do
+      click_button 'Ok'
+    end
     
     expect(page).not_to have_content(comment.body)
 
