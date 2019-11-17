@@ -1,3 +1,4 @@
+<!-- Cards with tasks displayed in groups of 3 -->
 <% @tasks.in_groups_of(3, false).each do |group| %>
   <div class='row card-deck '>
   <% group.each do |task| %> 

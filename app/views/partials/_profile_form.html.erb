@@ -1,8 +1,9 @@
+<!-- Error Messages -->
 <% @profile.errors.full_messages.each do |error| %> 
   <p><%= error %> </p> 
-<% end %>
+<% end %> 
 
-
+<!-- Form -->
 <div class='form-group align-item-center container border' >
   <%= form_for @profile do |f| %>
     <div class='row'>  
