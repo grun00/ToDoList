@@ -1,8 +1,8 @@
 <br>
-<br>
-
+<br> 
 <div class='container'>
 <div class='row'>
+  <!-- Dropdown -->
   <div class='col-2'> 
     <div class="btn-group">
       <button type="button" class="btn btn-primary">Sorting By</button>
@@ -24,8 +24,8 @@
           <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: ' dropdown-item', id: 'ord_incomp'%>
       </div>
     </div> 
-
   </div>
+  <!-- Task Display -->
   <div class='col-10'>
     <%= render partial: 'partials/display' %>
   </div>
