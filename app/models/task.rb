@@ -8,4 +8,5 @@ class Task < ApplicationRecord
   validates :description, length: {maximum: 280} 
 
   belongs_to :user
+  has_many :comments
 end

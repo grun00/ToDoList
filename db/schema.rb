@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_235423) do
+ActiveRecord::Schema.define(version: 2019_11_17_004259) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2019_11_15_235423) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.time "date_time"
+    t.text "body"
+    t.integer "like_status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "task_id"
+    t.integer "user_id"
+    t.index ["task_id"], name: "index_comments_on_task_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "nickname"
     t.text "bio"
@@ -52,6 +64,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_235423) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.boolean "share"
+    t.integer "comment_id"
+    t.index ["comment_id"], name: "index_tasks_on_comment_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -64,13 +78,19 @@ ActiveRecord::Schema.define(version: 2019_11_15_235423) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "profile_id"
+    t.integer "comment_id"
+    t.index ["comment_id"], name: "index_users_on_comment_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["profile_id"], name: "index_users_on_profile_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "tasks"
+  add_foreign_key "comments", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "tasks", "comments"
   add_foreign_key "tasks", "users"
+  add_foreign_key "users", "comments"
   add_foreign_key "users", "profiles"
 end
