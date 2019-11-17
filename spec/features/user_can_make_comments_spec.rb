@@ -79,6 +79,22 @@ feature 'User can make comments' do
 
   end
 
+  scenario 'And can see all owned comments' do
+    user = create(:user)
+    create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    other_comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit root_path
+    click_on 'My Comments'
+
+    expect(page).to have_content(comment.body)
+    expect(page).to have_content(other_comment.body) 
+
+  end
+
   scenario 'And can Delete a Comment' do
     pending
     user = create(:user)
@@ -97,41 +113,44 @@ feature 'User can make comments' do
 
   end
 
-  scenario 'And can Like a comment' do
+  scenario 'And must be owner to Delete a Comment' do 
     user = create(:user)
+    other_user = create(:user)
     create(:profile, user: user, share: true)
     task = create(:task, user: user)
     comment = create(:comment, user: user, task: task)
-    login_as(user)
+    login_as(other_user)
 
     visit task_path(task)
-    click_on 'Like'
 
-    expect(comment.likes.count).to eq 1
-
-  end
-
-  scenario 'And can Dislike a comment' do
-
+    expect(page).not_to have_css('button', text: 'Delete')
   end
 
   scenario 'And can sort Comments By New' do
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    old_comment = create(:comment, user: user, task: task)
+    new_comment = create(:comment, user: user, task: task)
+
+    visit task_path(task)
+    click_on 'Newest Comments'
+
+    new_comment.title.should appear_before(old_comment.title)
 
   end
 
   scenario 'And can sort Comments by Old' do
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    old_comment = create(:comment, user: user, task: task)
+    new_comment = create(:comment, user: user, task: task)
 
-  end
+    visit task_path(task)
+    click_on 'Oldest Comments'
 
-  scenario 'And can sort by most Likes' do
+    old_comment.title.should appear_before(new_comment.title)
 
-  end
-
-  scenario 'And can sort by most Dislikes' do
-
-  end
-
-  scenario 'And can see all own comments' do
-
-  end
+  end 
 end
