@@ -10,8 +10,7 @@
     <p class='col-5'></p>
     <p class='col-4'> <strong>Owner</strong>: 
     <% if @task.user.profile.share %>
-      <%= link_to @task.user.profile.nickname, profile_path(@task.user.profile.id) %>
-    <% else %>
+      <%= link_to @task.user.profile.nickname, profile_path(@task.user.profile.id) %> <% else %>
       <%= @task.user.profile.nickname %> 
     <% end %> 
     </p>
@@ -127,8 +126,8 @@
                 <!-- Delete Comment -->
                 <% if comment.user == current_user %> 
                   <%= link_to delete_comment_task_path(comment_id: comment.id), 
-                    method: :delete, data: {title: 'Comment Deletion', confirm: 'Delete Comment?', commit: 'Yes', remote: 'true'}, 
-                    class: 'btn btn-outline-danger btn-sm' do %> 
+                      method: :delete, data: {confirm: 'Delete Comment?'},
+                      class: 'btn btn-outline-danger btn-sm' do %> 
                   <i class='fa fa-trash'> Delete</i>
                 <% end %>
                 <% else %>
@@ -136,17 +135,18 @@
                   <i class='fa fa-trash'> Delete</i>
                 <% end %>
                 <% end %> 
-                <!-- Like Comment --> 
 
-                <%= link_to plus_comment_path(comment_id: comment.id, user_id: current_user.id),
-                  method: :post, class: 'btn btn-outline-success btn-sm' do %>
+                <!-- Like Comment --> 
+                <%= link_to pluses_path(comment_id: comment.id, task_id: @task ),
+                                        method: :post, class: 'btn btn-outline-success btn-sm' do %>
                 <i class='fa fa-plus-square'> Like</i>
               <% end %>
 
 
-
                 <!-- Dislike -->
                 <i class='fa fa-minus-square'> Dislike</i> 
+
+                <p class='text-right'> Likes: <%= comment.pluses.count %> </p>
               </small> 
             </div>
           </li>

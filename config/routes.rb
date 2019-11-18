@@ -19,6 +19,5 @@ Rails.application.routes.draw do
     resources :comments, only: %i[index]
   end
 
-  post 'plus_comment',  to: "comments#plus_comment"
-
+  resources :pluses, only: %i[create destroy]
 end

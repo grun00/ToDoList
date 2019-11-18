@@ -11,7 +11,7 @@ feature 'User can like comments' do
     visit task_path(task)
     click_on 'Like'
 
-    expect(comment.likes.count).to eq 1
+    expect(comment.pluses.count).to eq 1
 
   end
 
