@@ -5,6 +5,9 @@ class MinusesController < ApplicationController
   def create 
     if !minused?
       @minus = Minuse.create(user: current_user, comment: @comment)
+      if @comment.pluses.any?
+        @comment.pluses.where(user: current_user)[0].destroy
+      end
       if @minus.save
         flash[:notice] = 'Comment Minused'
       else

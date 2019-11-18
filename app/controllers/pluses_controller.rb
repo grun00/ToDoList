@@ -4,6 +4,9 @@ class PlusesController < ApplicationController
 
   def create 
     if !plused?
+      if @comment.minuses.any?
+        @comment.minuses.where(user: current_user)[0].destroy
+      end
       @plus = Pluse.create(user: current_user, comment: @comment)
       if @plus.save
         flash[:notice] = 'Comment Plused'

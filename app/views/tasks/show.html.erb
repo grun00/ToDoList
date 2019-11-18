@@ -96,7 +96,9 @@
               <%= f.text_area :body, class: 'form-controll', size: "30x5" %>
               <%= f.hidden_field :task_id, value: params[:id] %>
               <br>
-              <%= f.submit 'Post Comment' %>
+              <% if current_user %> 
+                <%= f.submit 'Post Comment', class: 'btn' %>
+              <% end %>
             </div> 
           <% end %>
           <hr>
@@ -137,16 +139,22 @@
                 <% end %> 
 
                 <!-- Plus Comment --> 
-                <%= link_to pluses_path(comment_id: comment.id, task_id: @task ),
-                                        method: :post, class: 'btn btn-outline-success btn-sm' do %>
-                <i class='fa fa-plus-square'> Plus</i>
-              <% end %> 
+                <% if current_user %>
+                  <%= link_to pluses_path(comment_id: comment.id, task_id: @task ),
+                                          method: :post, class: 'btn btn-outline-success btn-sm' do %>
+                    <i class='fa fa-plus-square'> Plus</i>
+                  <% end %> 
+                  <!-- Minus Comment --> 
+                  <%= link_to minuses_path(comment_id: comment.id, task_id: @task ),
+                                          method: :post, class: 'btn btn-outline-danger btn-sm' do %>
+                    <i class='fa fa-minus-square'> Minus</i>
+                  <% end %>
+                <% else %>
+                    <i class='fa fa-plus-square btn btn-outline-success btn-sm'> Plus</i>
+                    <i class='fa fa-minus-squarebtn btn-outline-danger btn-sm''> Minus</i> 
+                <% end %>
 
-                <!-- Minus Comment --> 
-                <%= link_to minuses_path(comment_id: comment.id, task_id: @task ),
-                                        method: :post, class: 'btn btn-outline-danger btn-sm' do %>
-                <i class='fa fa-minus-square'> Minus</i>
-              <% end %>
+
                 <p class='text-right'> Total Score: <%= comment.pluses.count - comment.minuses.count %> </p>
               </small> 
             </div>
