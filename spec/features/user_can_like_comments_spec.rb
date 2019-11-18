@@ -9,9 +9,10 @@ feature 'User can like comments' do
     login_as(user)
 
     visit task_path(task)
-    click_on 'Like'
+    click_on 'Plus'
 
     expect(comment.pluses.count).to eq 1
+    expect(page).to have_content('Comment Plused')
 
   end
 
