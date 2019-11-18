@@ -10,4 +10,8 @@ class CommentsController < ApplicationController
       end
     end
   end
+
+  def plus_comment
+    Like.create(user: current_user, comment: Comment.find(params[:comment_id]))
+  end
 end

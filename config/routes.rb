@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post 'change_status', on: :member
     post 'change_privacy', on: :member
     post 'make_comment', on: :member
-    delete 'delete_comment', on: :member
+    delete 'delete_comment', on: :member 
   end
 
   resources :profiles, only: %i[show new create update edit] do
@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     post 'change_privacy', on: :member
     resources :comments, only: %i[index]
   end
+
+  post 'plus_comment',  to: "comments#plus_comment"
 
 end

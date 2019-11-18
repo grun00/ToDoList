@@ -124,6 +124,7 @@
                 <%= comment.body %>
               </p>
               <small class='text-muted'> 
+                <!-- Delete Comment -->
                 <% if comment.user == current_user %> 
                   <%= link_to delete_comment_task_path(comment_id: comment.id), 
                     method: :delete, data: {title: 'Comment Deletion', confirm: 'Delete Comment?', commit: 'Yes', remote: 'true'}, 
@@ -135,7 +136,16 @@
                   <i class='fa fa-trash'> Delete</i>
                 <% end %>
                 <% end %> 
+                <!-- Like Comment --> 
+
+                <%= link_to plus_comment_path(comment_id: comment.id, user_id: current_user.id),
+                  method: :post, class: 'btn btn-outline-success btn-sm' do %>
                 <i class='fa fa-plus-square'> Like</i>
+              <% end %>
+
+
+
+                <!-- Dislike -->
                 <i class='fa fa-minus-square'> Dislike</i> 
               </small> 
             </div>

@@ -1,8 +1,7 @@
 require 'rails_helper'
-feature 'User can like comments' do
 
+feature 'User can like comments' do 
   scenario 'And can Like a comment' do
-    pending
     user = create(:user)
     create(:profile, user: user, share: true)
     task = create(:task, user: user)
@@ -17,7 +16,6 @@ feature 'User can like comments' do
   end
 
   scenario 'And can Dislike a comment' do
-    pending
     user = create(:user)
     create(:profile, user: user, share: true)
     task = create(:task, user: user)
