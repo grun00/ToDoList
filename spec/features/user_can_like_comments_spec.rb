@@ -24,9 +24,9 @@ feature 'User can like comments' do
     login_as(user)
 
     visit task_path(task)
-    click_on 'Dislike'
+    click_on 'Minus'
 
-    expect(comment.dislikes.count).to eq 1
+    expect(comment.minuses.count).to eq 1
 
   end
 

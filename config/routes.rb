@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   end
 
   resources :pluses, only: %i[create destroy]
+  resources :minuses, only: %i[create destroy]
 end

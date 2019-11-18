@@ -136,17 +136,18 @@
                 <% end %>
                 <% end %> 
 
-                <!-- Like Comment --> 
+                <!-- Plus Comment --> 
                 <%= link_to pluses_path(comment_id: comment.id, task_id: @task ),
                                         method: :post, class: 'btn btn-outline-success btn-sm' do %>
                 <i class='fa fa-plus-square'> Plus</i>
+              <% end %> 
+
+                <!-- Minus Comment --> 
+                <%= link_to minuses_path(comment_id: comment.id, task_id: @task ),
+                                        method: :post, class: 'btn btn-outline-danger btn-sm' do %>
+                <i class='fa fa-minus-square'> Minus</i>
               <% end %>
-
-
-                <!-- Dislike -->
-                <i class='fa fa-minus-square'> Dislike</i> 
-
-                <p class='text-right'> Likes: <%= comment.pluses.count %> </p>
+                <p class='text-right'> Total Score: <%= comment.pluses.count - comment.minuses.count %> </p>
               </small> 
             </div>
           </li>

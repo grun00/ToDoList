@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :comments, dependent: :destroy 
   has_many :pluses, dependent: :destroy 
+  has_many :minuses, dependent: :destroy
 end
