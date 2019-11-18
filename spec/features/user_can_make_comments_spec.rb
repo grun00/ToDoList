@@ -133,8 +133,8 @@ feature 'User can make comments' do
     old_comment = create(:comment, user: user, task: task)
     new_comment = create(:comment, user: user, task: task)
 
-    visit task_path(task)
-    click_on 'Newest Comments'
+    visit profile_comments_path(user.profile)
+    click_on 'Newest'
 
     new_comment.title.should appear_before(old_comment.title)
 
@@ -147,8 +147,9 @@ feature 'User can make comments' do
     old_comment = create(:comment, user: user, task: task)
     new_comment = create(:comment, user: user, task: task)
 
-    visit task_path(task)
-    click_on 'Oldest Comments'
+    visit profile_comments_path(user.profile)
+    find('a', text: 'Oldest').click
+
 
     old_comment.title.should appear_before(new_comment.title)
 

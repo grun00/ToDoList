@@ -1,3 +1,21 @@
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">
+    Sorting By
+  </button>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu"> 
+    <div class="dropdown-divider"></div>
+    <%= link_to 'Newest', profile_comments_path(order: 'new'), 
+      class: ' dropdown-item', id: 'ord_new'%>
+    <%= link_to 'Oldest', profile_comments_path(order: 'old'), 
+      class: ' dropdown-item', id: 'ord_old'%>
+    <div class="dropdown-divider"></div>
+  </div>
+</div> 
+
 <ul class='media-list'>
   <% @comments.each do |comment| %> 
   <li class="media">
