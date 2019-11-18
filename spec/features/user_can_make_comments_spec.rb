@@ -131,12 +131,13 @@ feature 'User can make comments' do
     create(:profile, user: user)
     task = create(:task, user: user)
     old_comment = create(:comment, user: user, task: task)
+    sleep 2
     new_comment = create(:comment, user: user, task: task)
 
     visit profile_comments_path(user.profile)
     click_on 'Newest'
 
-    new_comment.title.should appear_before(old_comment.title)
+    new_comment.body.should appear_before(old_comment.body)
 
   end
 
@@ -151,7 +152,7 @@ feature 'User can make comments' do
     find('a', text: 'Oldest').click
 
 
-    old_comment.title.should appear_before(new_comment.title)
+    old_comment.body.should appear_before(new_comment.body)
 
   end 
 end
