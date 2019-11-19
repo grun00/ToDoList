@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :comment_owner?
+
   def index
     @comments = Comment.where(user: current_user)
     if params[:order].in? %w[new old]
@@ -9,5 +11,14 @@ class CommentsController < ApplicationController
         @comments.order!(:created_at)
       end
     end
+  end 
+
+  private 
+    
+  def comment_owner?
+    if !current_user
+      redirect_to root_path
+    end
   end
 end
+

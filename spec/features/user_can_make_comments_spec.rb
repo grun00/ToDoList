@@ -186,4 +186,18 @@ feature 'User can make comments' do
     oldest_comment.body.should appear_before(newest_comment.body)
 
   end
+
+  scenario 'And must be Loged in to see all Comments page' do
+    user = create(:user)
+    profile = create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    other_comment = create(:comment, user: user, task: task)
+
+    visit profile_comments_path(profile)
+
+    expect(current_path).to eq root_path
+
+  end
+
 end
