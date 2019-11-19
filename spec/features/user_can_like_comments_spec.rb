@@ -43,7 +43,7 @@ feature 'User can like comments' do
     create(:pluse, user: user, comment: least_liked_comment)
 
     visit task_path(task)
-    click_on 'Most Pluses'
+    click_on 'Biggest Score'
 
     most_liked_comment.body.should appear_before(least_liked_comment.body)
 
@@ -57,23 +57,10 @@ feature 'User can like comments' do
     least_liked_comment = create(:comment, user: user, task: task)
 
     visit task_path(task)
-    click_on 'Most Minuses'
+    click_on 'Lowest Score'
 
     most_liked_comment.body.should appear_before(least_liked_comment.body)
 
   end
 
-  scenario 'And can sort by most General Votes' do
-    user = create(:user)
-    create(:profile, user: user)
-    task = create(:task, user: user)
-    most_liked_comment = create(:comment, user: user, task: task)
-    least_liked_comment = create(:comment, user: user, task: task)
-
-    visit task_path(task)
-    click_on 'Most Total'
-
-    most_liked_comment.body.should appear_before(least_liked_comment.body)
-
-  end
 end

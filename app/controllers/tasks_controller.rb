@@ -33,6 +33,19 @@ class TasksController < ApplicationController
       redirect_to root_path
     end
     @comment = Comment.new
+    @task_comments = Comment.where(task: @task)
+    if params[:order].in? %w[old new plus_score minus_score]
+      case params[:order]
+        when 'plus_score'
+          @task_comments.order!(:score)
+        when 'minus_score'
+          @task_comments.order!(title: :desc)
+        when 'old'
+          @task_comments.order!(:created_at)
+        when 'new'
+          @task_comments.order!(created_at: :desc) 
+      end
+    end
   end
 
   def new

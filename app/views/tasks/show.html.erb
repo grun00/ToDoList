@@ -114,16 +114,20 @@
       <div class='col'>
         <ul class=" mx-5 nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Newest</a>
+            <%= link_to 'Biggest Score', task_path(order: 'plus_score'),
+              class: ((params[:order] == 'plus_score') ? "nav-link active" : "nav-link")%>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Oldest</a>
+            <%= link_to 'Lowest Score', task_path(order: 'minus_score'),
+              class: ((params[:order] == 'minus_score') ? "nav-link active" : "nav-link")%>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Most Score</a>
+            <%= link_to 'Oldest', task_path(order: 'old'),
+              class: ((params[:order] == 'old') ? "nav-link active" : "nav-link")%>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" >Least Score</a>
+            <%= link_to 'Newest', task_path(order: 'new'),
+              class: ((params[:order] == 'new') ? "nav-link active" : "nav-link")%>
           </li>
         </ul>
       </div>
@@ -132,9 +136,9 @@
     <br>
     <!--Comment Section --> 
     <div class='row'>
-    <% if @task.comments.any? %>
+    <% if @task_comments.any? %>
       <ul class='media-list'>
-        <% @task.comments.each do |comment| %> 
+        <% @task_comments.each do |comment| %> 
           <li class="media">
             <% if comment.user.profile.avatar.attached? %>
               <%= image_tag comment.user.profile.avatar, class: 'float-left img-thumbnail thumbnail img-fluid col-2' %>
