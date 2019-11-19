@@ -3,7 +3,11 @@ class PlusesController < ApplicationController
 
 
   def create 
-    if !plused?
+    if plused?
+      Pluse.where(comment: @comment)[0].destroy
+      @comment.update(score: (@comment.score - 1))
+      flash[:notice] = 'Comment Unplused'
+    else
       if @comment.minuses.any?
         @comment.minuses.where(user: current_user)[0].destroy
       end
@@ -14,10 +18,6 @@ class PlusesController < ApplicationController
       else
         flash[:alert] = 'Error in Plussing' 
       end
-    else
-      Pluse.where(comment: @comment)[0].destroy
-      @comment.update(score: (@comment.score - 1))
-      flash[:notice] = 'Comment Unplused'
     end
     redirect_to task_path(@task)
   end
@@ -30,10 +30,6 @@ class PlusesController < ApplicationController
 
   def find_task
     @task = Task.find(params[:task_id])
-  end
-
-  def plused?
-    Pluse.where(user: current_user, comment: @comment).exists?
-  end
+  end 
 end
 

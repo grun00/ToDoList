@@ -109,7 +109,6 @@ feature 'User can like comments' do
     click_on 'Minus'
 
     expect(comment.score).to eq 0
-    expect(page).to have_content('Comment Unminused')
 
   end
 

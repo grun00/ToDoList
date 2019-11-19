@@ -33,8 +33,5 @@ class MinusesController < ApplicationController
     @task = Task.find(params[:task_id])
   end
 
-  def minused?
-    Minuse.where(user: current_user, comment: @comment).exists?
-  end
 end
 

@@ -5,4 +5,14 @@ class ApplicationController < ActionController::Base
       redirect_to new_profile_path
     end
   end
+
+  private
+
+  def plused?
+    Pluse.where(user: current_user, comment: @comment).exists?
+  end
+
+  def minused?
+    Minuse.where(user: current_user, comment: @comment).exists?
+  end
 end
