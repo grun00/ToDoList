@@ -65,4 +65,55 @@ feature 'User can like comments' do
 
   end
 
+  scenario 'And if Plus a comment twitce, it reverts back to unplused' do 
+    user = create(:user)
+    create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Plus'
+    click_on 'Plus'
+
+    expect(comment.pluses.count).to eq 0
+    expect(page).to have_content('Comment Unplused')
+
+  end
+
+  scenario 'And if Minus a comment twitce, it reverts back to unminused' do
+    user = create(:user)
+    create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Minus'
+    click_on 'Minus'
+
+    expect(comment.minuses.count).to eq 0
+    expect(page).to have_content('Comment Unminused')
+
+  end
+
+  scenario 'And if Pluses a Minused comment,it reverts to no Pluses/Minuses' do
+    user = create(:user)
+    create(:profile, user: user, share: true)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Plus'
+    click_on 'Minus'
+
+    expect(comment.score).to eq 0
+    expect(page).to have_content('Comment Unminused')
+
+  end
+
+  scenario 'And if Minus a Plused comment,it reverts to no Pluses/Minuses' do
+
+  end
 end
