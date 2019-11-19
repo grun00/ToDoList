@@ -10,11 +10,13 @@ class PlusesController < ApplicationController
       @plus = Pluse.create(user: current_user, comment: @comment)
       if @plus.save
         flash[:notice] = 'Comment Plused'
+        @comment.update(score: (@comment.score + 1))
       else
         flash[:alert] = 'Error in Plussing' 
       end
     else
       Pluse.where(comment: @comment)[0].destroy
+      @comment.update(score: (@comment.score - 1))
       flash[:notice] = 'Comment Unplused'
     end
     redirect_to task_path(@task)

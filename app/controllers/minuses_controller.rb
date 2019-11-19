@@ -5,6 +5,7 @@ class MinusesController < ApplicationController
   def create 
     if minused?
       Minuse.where(comment: @comment)[0].destroy
+      @comment.update(score: (@comment.score + 1))
       flash[:notice] = 'Comment Unminused'
     else 
       @minus = Minuse.create(user: current_user, comment: @comment)
@@ -12,6 +13,7 @@ class MinusesController < ApplicationController
         @comment.pluses.where(user: current_user)[0].destroy
       end
       if @minus.save
+        @comment.update(score: (@comment.score - 1))
         flash[:notice] = 'Comment Minused'
       else
         flash[:alert] = 'Error in minussing' 

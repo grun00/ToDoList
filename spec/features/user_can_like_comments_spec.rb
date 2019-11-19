@@ -38,9 +38,8 @@ feature 'User can like comments' do
     most_liked_comment = create(:comment, user: user, task: task)
     least_liked_comment = create(:comment, user: user, task: task)
     create(:pluse, user: user, comment: most_liked_comment)
-    create(:pluse, user: user, comment: most_liked_comment)
-    create(:pluse, user: user, comment: most_liked_comment)
-    create(:pluse, user: user, comment: least_liked_comment)
+    create(:minuse, user: user, comment: least_liked_comment)
+    login_as(user)
 
     visit task_path(task)
     click_on 'Biggest Score'
@@ -55,6 +54,9 @@ feature 'User can like comments' do
     task = create(:task, user: user)
     most_liked_comment = create(:comment, user: user, task: task)
     least_liked_comment = create(:comment, user: user, task: task)
+    create(:pluse, user: user, comment: most_liked_comment)
+    create(:minuse, user: user, comment: least_liked_comment)
+    login_as(user)
 
     visit task_path(task)
     click_on 'Lowest Score'

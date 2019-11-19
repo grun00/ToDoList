@@ -8,4 +8,7 @@ class Comment < ApplicationRecord
   has_many :pluses, dependent: :destroy
   has_many :minuses, dependent: :destroy
 
+  def calc_score
+    self.score = self.pluses.count - self.minuses.count
+  end
 end

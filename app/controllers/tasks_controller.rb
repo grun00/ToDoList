@@ -37,9 +37,9 @@ class TasksController < ApplicationController
     if params[:order].in? %w[old new plus_score minus_score]
       case params[:order]
         when 'plus_score'
-          @task_comments.order!(:score)
+          @task_comments.order!(score: :desc)
         when 'minus_score'
-          @task_comments.order!(title: :desc)
+          @task_comments.order!(:score)
         when 'old'
           @task_comments.order!(:created_at)
         when 'new'
