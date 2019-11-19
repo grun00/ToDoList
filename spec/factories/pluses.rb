@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :pluse do
-    user { nil }
-    comment { nil }
+    user 
+    comment
   end
 end

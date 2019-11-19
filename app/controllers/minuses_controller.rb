@@ -3,7 +3,10 @@ class MinusesController < ApplicationController
 
 
   def create 
-    if !minused?
+    if minused?
+      Minuse.where(comment: @comment)[0].destroy
+      flash[:notice] = 'Comment Unminused'
+    else 
       @minus = Minuse.create(user: current_user, comment: @comment)
       if @comment.pluses.any?
         @comment.pluses.where(user: current_user)[0].destroy
@@ -13,9 +16,6 @@ class MinusesController < ApplicationController
       else
         flash[:alert] = 'Error in minussing' 
       end
-    else
-      Pluse.where(comment: @comment)[0].destroy
-      flash[:notice] = 'Comment Unplused'
     end
     redirect_to task_path(@task)
   end

@@ -141,17 +141,17 @@
                 <!-- Plus Comment --> 
                 <% if current_user %>
                   <%= link_to pluses_path(comment_id: comment.id, task_id: @task ),
-                                          method: :post, class: 'btn btn-outline-success btn-sm' do %>
-                    <i class='fa fa-plus-square'> Plus</i>
+                    method: :post, class: ((comment.pluses.where(user: current_user)[0]) ? "btn btn-success btn-sm" : "btn btn-outline-success btn-sm") do %>
+                    <i class='fa fa-plus-square'> Plus</i> 
                   <% end %> 
                   <!-- Minus Comment --> 
                   <%= link_to minuses_path(comment_id: comment.id, task_id: @task ),
-                                          method: :post, class: 'btn btn-outline-danger btn-sm' do %>
+                      method: :post, class: ((comment.minuses.where(user: current_user)[0]) ? "btn btn-danger btn-sm" : "btn btn-outline-danger btn-sm")do %>
                     <i class='fa fa-minus-square'> Minus</i>
                   <% end %>
                 <% else %>
                     <i class='fa fa-plus-square btn btn-outline-success btn-sm'> Plus</i>
-                    <i class='fa fa-minus-squarebtn btn-outline-danger btn-sm''> Minus</i> 
+                    <i class='fa fa-minus-squarebtn btn-outline-danger btn-sm'> Minus</i> </i>
                 <% end %>
 
 

@@ -32,12 +32,48 @@ feature 'User can like comments' do
 
 
   scenario 'And can sort by most Likes' do
-    pending
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    most_liked_comment = create(:comment, user: user, task: task)
+    least_liked_comment = create(:comment, user: user, task: task)
+    create(:pluse, user: user, comment: most_liked_comment)
+    create(:pluse, user: user, comment: most_liked_comment)
+    create(:pluse, user: user, comment: most_liked_comment)
+    create(:pluse, user: user, comment: least_liked_comment)
+
+    visit task_path(task)
+    click_on 'Most Pluses'
+
+    most_liked_comment.body.should appear_before(least_liked_comment.body)
 
   end
 
   scenario 'And can sort by most Dislikes' do
-    pending
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    most_liked_comment = create(:comment, user: user, task: task)
+    least_liked_comment = create(:comment, user: user, task: task)
+
+    visit task_path(task)
+    click_on 'Most Minuses'
+
+    most_liked_comment.body.should appear_before(least_liked_comment.body)
+
+  end
+
+  scenario 'And can sort by most General Votes' do
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    most_liked_comment = create(:comment, user: user, task: task)
+    least_liked_comment = create(:comment, user: user, task: task)
+
+    visit task_path(task)
+    click_on 'Most Total'
+
+    most_liked_comment.body.should appear_before(least_liked_comment.body)
 
   end
 end
