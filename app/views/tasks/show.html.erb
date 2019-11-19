@@ -106,9 +106,32 @@
           <div class="clearfix"></div> 
         </div>
       </div>
-    </div>
 
+    </div>
+  </div>
+    <br>
+    <div clas='row'> 
+      <div class='col'>
+        <ul class=" mx-5 nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Newest</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Oldest</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Most Score</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" >Least Score</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <br>
     <!--Comment Section --> 
+    <div class='row'>
     <% if @task.comments.any? %>
       <ul class='media-list'>
         <% @task.comments.each do |comment| %> 
@@ -137,7 +160,6 @@
                   <i class='fa fa-trash'> Delete</i>
                 <% end %>
                 <% end %> 
-
                 <!-- Plus Comment --> 
                 <% if current_user %>
                   <%= link_to pluses_path(comment_id: comment.id, task_id: @task ),
@@ -152,9 +174,7 @@
                 <% else %>
                     <i class='fa fa-plus-square btn btn-outline-success btn-sm'> Plus</i>
                     <i class='fa fa-minus-squarebtn btn-outline-danger btn-sm'> Minus</i> </i>
-                <% end %>
-
-
+                <% end %> 
                 <p class='text-right'> Total Score: <%= comment.pluses.count - comment.minuses.count %> </p>
               </small> 
             </div>
@@ -165,7 +185,6 @@
       </ul> 
     <% end %> 
     </div>
-
   </div>
 
 
