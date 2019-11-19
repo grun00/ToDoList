@@ -127,12 +127,12 @@ feature 'User can make comments' do
   end
 
   scenario 'And can sort Comments By New' do
-    pending("Comments are created at the same time?")
     user = create(:user)
     create(:profile, user: user)
     task = create(:task, user: user)
     old_comment = create(:comment, user: user, task: task)
     new_comment = create(:comment, user: user, task: task)
+    login_as(user)
 
     visit profile_comments_path(user.profile)
     click_on 'Newest'
@@ -142,12 +142,12 @@ feature 'User can make comments' do
   end
 
   scenario 'And can sort Comments by Old' do
-    pending("Comments are created at the same time?")
     user = create(:user)
     create(:profile, user: user)
     task = create(:task, user: user)
     old_comment = create(:comment, user: user, task: task)
     new_comment = create(:comment, user: user, task: task)
+    login_as(user)
 
     visit profile_comments_path(user.profile)
     find('a', text: 'Oldest').click
@@ -156,4 +156,34 @@ feature 'User can make comments' do
     old_comment.body.should appear_before(new_comment.body)
 
   end 
+
+  scenario 'And can sort comments on task page by Newest' do
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    oldest_comment = create(:comment, user: user, task: task)
+    newest_comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Newest'
+
+    newest_comment.body.should appear_before(oldest_comment.body)
+
+  end
+
+  scenario 'And can sort comments on task page by Oldest' do
+    user = create(:user)
+    create(:profile, user: user)
+    task = create(:task, user: user)
+    oldest_comment = create(:comment, user: user, task: task)
+    newest_comment = create(:comment, user: user, task: task)
+    login_as(user)
+
+    visit task_path(task)
+    click_on 'Oldest'
+
+    oldest_comment.body.should appear_before(newest_comment.body)
+
+  end
 end
