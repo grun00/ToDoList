@@ -96,8 +96,9 @@
               <%= f.text_area :body, class: 'form-controll', size: "30x5" %>
               <%= f.hidden_field :task_id, value: params[:id] %>
               <br>
+              <br>
               <% if current_user %> 
-                <%= f.submit 'Post Comment', class: 'btn' %>
+                <%= f.submit 'Post Comment', class: 'btn btn-outline-primary' %>
               <% end %>
             </div> 
           <% end %>
