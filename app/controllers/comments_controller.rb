@@ -16,7 +16,10 @@ class CommentsController < ApplicationController
   private 
     
   def comment_owner?
+    @profile = Profile.find(params[:profile_id])
     if !current_user
+      redirect_to root_path
+    elsif (current_user.profile != @profile and !@profile.share )
       redirect_to root_path
     end
   end

@@ -200,4 +200,19 @@ feature 'User can make comments' do
 
   end
 
+  scenario 'And profile must be public to see all Comments page' do
+    user = create(:user)
+    other_user = create(:user)
+    profile = create(:profile, user: user, share: false)
+    other_profile = create(:profile, user: other_user)
+    task = create(:task, user: user)
+    comment = create(:comment, user: user, task: task)
+    other_comment = create(:comment, user: user, task: task)
+    login_as(other_user)
+
+    visit profile_comments_path(profile)
+
+    expect(current_path).to eq root_path
+
+  end
 end
