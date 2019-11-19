@@ -136,7 +136,7 @@
     <br>
     <!--Comment Section --> 
     <div class='row'>
-    <% if @task_comments.any? %>
+    <% if @task_comments != nil %>
       <ul class='media-list'>
         <% @task_comments.each do |comment| %> 
           <li class="media">
