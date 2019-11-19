@@ -8,14 +8,13 @@
     <!--Navbar for loged in user -->
     <% if (user_signed_in?)%> 
       <!-- Dropdown -->
-      <div class="btn-group ml-3">
-        <button type="button" class="btn btn-outline-success"> My Tasks</button> 
-        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="btn-group ml-3"> 
+        <%= link_to 'Task Board', tasks_path, class: 'btn btn-primary'%>
+        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu">
           <div class="dropdown-divider"></div>
-          <%= link_to 'Task Board', tasks_path, class: 'dropdown-item btn'%>
           <%= link_to 'Complete Tasks', complete_tasks_path, class: 'dropdown-item' %> 
           <%= link_to 'Incomplete Tasks', incomplete_tasks_path, class: 'dropdown-item' %> 
           <div class="dropdown-divider"></div>
