@@ -7,17 +7,15 @@ class MinusesController < ApplicationController
       Minuse.where(comment: @comment)[0].destroy
       @comment.update(score: (@comment.score + 1))
       flash[:notice] = 'Comment Unminused'
+    elsif plused?
+      Pluse.where(comment: @comment)[0].destroy
+      @comment.update(score: (@comment.score - 1))
+      flash[:notice] = 'Comment Unplused'
     else 
       @minus = Minuse.create(user: current_user, comment: @comment)
-      if @comment.pluses.any?
-        @comment.pluses.where(user: current_user)[0].destroy
-      end
-      if @minus.save
-        @comment.update(score: (@comment.score - 1))
-        flash[:notice] = 'Comment Minused'
-      else
-        flash[:alert] = 'Error in minussing' 
-      end
+      @minus.save
+      @comment.update(score: (@comment.score - 1))
+      flash[:notice] = 'Comment Minused'
     end
     redirect_to task_path(@task)
   end

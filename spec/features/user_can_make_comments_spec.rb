@@ -105,9 +105,7 @@ feature 'User can make comments' do
 
     visit task_path(task)
     click_on 'Delete'
-    page.accept_alert do
-      click_button 'Ok'
-    end
+    click_button 'Ok'
     
     expect(page).not_to have_content(comment.body)
 
