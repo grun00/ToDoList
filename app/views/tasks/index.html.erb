@@ -1,35 +1,35 @@
 <br>
 <br> 
 <div class='container'>
-<div class='row'>
-  <!-- Dropdown -->
-  <div class='col-2'> 
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary">
-        Sorting By
-      </button>
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu"> 
-        <div class="dropdown-divider"></div>
-          <%= link_to 'Title(asc)', tasks_path(order: 'asc'), class: ' dropdown-item', id: 'ord_new'%>
-          <%= link_to 'Title(des)', tasks_path(order: 'des'), class: ' dropdown-item', id: 'ord_new'%>
-        <div class="dropdown-divider"></div>
-          <%= link_to 'Newest', tasks_path(order: 'new'), class: ' dropdown-item', id: 'ord_new'%>
-          <%= link_to 'Oldest', tasks_path(order: 'old'), class: ' dropdown-item', id: 'ord_old'%>
-        <div class="dropdown-divider"></div>
-          <%= link_to 'Highest Priority', tasks_path(order: 'high'), class: ' dropdown-item', id: 'ord_high'%>
-          <%= link_to 'Lowest Priority', tasks_path(order: 'low'), class: ' dropdown-item', id: 'ord_low'%>
-        <div class="dropdown-divider"></div>
-          <%= link_to 'Complete First', tasks_path(order: 'comp'), class: ' dropdown-item', id: 'ord_comp'%>
-          <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: ' dropdown-item', id: 'ord_incomp'%>
-      </div>
-    </div> 
-  </div>
+  <!-- NavTab --> 
+  <div class='row justify-content-md-center'>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to 'Title(asc)', tasks_path(order: 'asc'), class: ((params[:order] == 'asc') ? "nav-link active" : "nav-link"), id: 'ord_new'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Title(des)', tasks_path(order: 'des'), class: ((params[:order] == 'des') ? "nav-link active" : "nav-link"), id: 'ord_new'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Newest', tasks_path(order: 'new'), class: ((params[:order] == 'new') ? "nav-link active" : "nav-link"), id: 'ord_new'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Oldest', tasks_path(order: 'old'), class: ((params[:order] == 'old') ? "nav-link active" : "nav-link"), id: 'ord_old'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Highest Priority', tasks_path(order: 'high'), class: ((params[:order] == 'high') ? "nav-link active" : "nav-link"), id: 'ord_high'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Lowest Priority', tasks_path(order: 'low'), class: ((params[:order] == 'low') ? "nav-link active" : "nav-link"), id: 'ord_low'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Complete First', tasks_path(order: 'comp'), class: ((params[:order] == 'comp') ? "nav-link active" : "nav-link"), id: 'ord_comp'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Incomplete First', tasks_path(order: 'incomp'), class: ((params[:order] == 'incomp') ? "nav-link active" : "nav-link"), id: 'ord_incomp'%>
+      </li>
+    </ul>
+  </div> 
   <!-- Task Display -->
-  <div class='col-10'>
-    <%= render partial: 'partials/display' %>
-  </div>
-  </div>
+  <%= render partial: 'partials/display' %>
 </div>
