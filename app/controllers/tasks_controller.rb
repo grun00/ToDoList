@@ -56,7 +56,7 @@ class TasksController < ApplicationController
     @task = Task.create(task_params)
     @task.user = current_user
     if @task.save
-      flash[:alert] = 'Task Created!'
+      flash[:notice] = 'Task Created!'
       redirect_to @task
     else
       render :new
@@ -68,7 +68,7 @@ class TasksController < ApplicationController
 
   def update 
     if @task.update(task_params)
-      flash[:alert] = 'Task Updated!'
+      flash[:notice] = 'Task Updated!'
       redirect_to @task
     else
       render :edit

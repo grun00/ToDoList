@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
     @profile.user = current_user
     current_user.profile_id = @profile.id
     if @profile.save
-      flash[:alert] = 'Profile Created!'
+      flash[:notice] = 'Profile Created!'
       redirect_to @profile
     else
       render :new
@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      flash[:alert] = 'Task Updated!'
+      flash[:notice] = 'Task Updated!'
       redirect_to @profile
     else
       render :edit
