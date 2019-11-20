@@ -45,17 +45,28 @@
   </div> 
 
   <!-- Privacy Setting --> 
-  <div class='row text-center' align='center'>
-    <p class='col-4'></p>
-    <% if current_user == @task.user %>
-      <%= form_for(@task, url: change_privacy_task_path, method: :post) do |f| %>
-        <strong><%= f.label :share, 'Change Privacy:' %></strong>
-        <%= f.select(:share, [['Private', false], ['Public', true]]) %>
-        <%= f.hidden_field :task_id, value: params[:id] %>
-        <%= f.submit 'Change Setting' %>
-      <% end %>
-    <% end %> 
-  </div>
+      <% if current_user == @task.user %>
+        <%= form_for(@task, url: change_privacy_task_path, method: :post) do |f| %>
+      <div class='container'>
+        <div class='row justify-content-md-center'>
+      
+          <div class='col col-2'>
+            <strong ><%= f.label :share, 'Change Privacy:' %></strong>
+          </div>
+
+          <div class='col col-2'>
+            <%= f.select :share, [['Private', false], ['Public', true]]  %>
+            <%= f.hidden_field :task_id, value: params[:id] %>
+          </div>
+
+          <div class='col col-1'>
+            <%= f.submit 'Change Setting', class: 'btn btn-primary'%>
+          </div>
+
+        </div>
+      </div>
+        <% end %>
+      <% end %> 
 
   <!-- Status Setting --> 
   <div class='row text-center' align='center'>
