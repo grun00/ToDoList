@@ -1,7 +1,7 @@
 TaskManager App
 ===============
 
-This project started as a simple ToDo list app that I did to train Ruby On Rails. I decided to add features that don't exactly make sense for a ToDo list but because I thought they were interesting features and I wanted to implement them somehow.
+This project started as a simple ToDo list app that I did to train Ruby On Rails. I implemented some features that don't exactly make sense for a ToDO list app, but I thought they were interesting and wanted to think of ways that I could implement them.
 
 Getting Started 
 ===============
