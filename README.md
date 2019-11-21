@@ -12,7 +12,7 @@ Prerequisites
 =============
 
 1. Ruby 2.6.4 
-2. 2. Rails 6.0.1
+2. Rails 6.0.1
 
 bin/setup should install everything else.
 
