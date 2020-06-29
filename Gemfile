@@ -5,7 +5,7 @@ ruby '2.6.4'
 
 #Data-Confirm Modals
 gem 'data-confirm-modal'
-#SimpleCov 
+#SimpleCov
 gem 'simplecov', require: false, group: :test
 #FontAwesome
 gem 'font-awesome-rails'
@@ -22,7 +22,7 @@ gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 #BootStrap
 gem 'bootstrap', '~> 4.3.1'
-#Orderly for testing 
+#Orderly for testing
 gem 'orderly'
 #FactoryBot for testing
 gem "factory_bot_rails"
@@ -33,7 +33,7 @@ gem 'capybara'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -58,7 +58,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   #Rspec Gem
   gem 'rspec-rails'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console 
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
