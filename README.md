@@ -11,10 +11,16 @@ clone the project to your local machine and run bin/setup, and after rails serve
 Prerequisites
 =============
 
-1. Ruby 2.6.4
+1. Ruby 2.7.1
 2. Rails 6.0.1
 
-bin/setup should install everything else.
+bin/setup should install everything else. Or make manually follow the steps:
+```console
+$ bundle
+$ yarn install --check-files
+$ bundle exec rails db:create db:migrate
+```
+Note: check your database.yml and change with your configration.
 
 Running Tests
 =============
