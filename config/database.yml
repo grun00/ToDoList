@@ -1,5 +1,8 @@
 default: &default
   adapter: postgresql
+  username: your_username_here
+  password: your_password_here
+  host: your_host_here
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
@@ -11,9 +14,6 @@ test:
   <<: *default
   database: todolist_test
 
-
 production:
   <<: *default
   database: todolist_production
-  username: todolist
-  password: <%= ENV['TODOLIST_DATABASE_PASSWORD'] %>
