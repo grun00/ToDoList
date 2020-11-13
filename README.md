@@ -34,7 +34,5 @@ I used the following Gem to do my tests:
 
 I also used SimpleCov (0.17.1) to keep track of what was being tested.
 
-Heroku
-======
-https://todolist-targ.herokuapp.com/
+
 
